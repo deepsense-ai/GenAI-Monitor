@@ -26,7 +26,6 @@ def _make_output_parser_name(cls_name: str) -> str:
     return f"{cls_name}OutputParser"
 
 
-# pylint: disable=too-many-arguments
 def register_class(
     cls: Type,
     inference_methods: List[str],
@@ -53,7 +52,6 @@ def register_class(
         a hash.
         max_unique_instances: The maximum number of unique sample instances for each conditioning.
     """
-
     cls_name = cls.__name__
     methods_to_wrap = [getattr(cls, method_name) for method_name in inference_methods]
     if parse_inference_method_arguments is None:
@@ -95,7 +93,6 @@ def register_class(
         )
 
 
-# pylint: disable=too-many-arguments
 def register_function(
     func: Callable,
     model_output_to_bytes: Callable[[Any], bytes],
@@ -187,7 +184,6 @@ def register_inference_method(
         persistency_manager: The persistency manager.
         runtime_manager: The runtime manager.
     """
-
     # Note: Save objects are saved to disk, thus conditioning parser needs a reference to the persistency manager
     conditioning_parser.persistency_manager = persistency_manager
     conditioning_parser.db_manager = db_manager
@@ -212,7 +208,6 @@ def unregister(func: Callable, wrapper_registry: WrapperRegistry = Provide[Depen
         func: The function to unregister.
         wrapper_registry: The wrapper registry.
     """
-
     wrapper_registry.unregister(func=func)
 
 
@@ -222,7 +217,6 @@ def register_forward_artifact(func: Callable):
     Args:
         func: The function to register.
     """
-
     register_artifact(func=func, direction="forward")
 
 
@@ -232,7 +226,6 @@ def register_backward_artifact(func: Callable):
     Args:
         func: The function to register.
     """
-
     register_artifact(func=func, direction="backward")
 
 
@@ -255,7 +248,6 @@ def register_artifact(
         persistency_manager: The persistency manager.
         runtime_manager: The runtime manager.
     """
-
     artifact_registry.register(
         func=func,
         direction=direction,

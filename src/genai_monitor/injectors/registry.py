@@ -31,12 +31,10 @@ class WrapperRegistry:
         _wrapper_factory: Factory for creating wrappers.
         _registry: Dictionary of registered wrappers.
     """
-
     _wrapper_factory: WrapperFactory
     _registry: Dict[str, Union[FunctionWrapper, MethodWrapper]] = field(factory=dict)
 
-    # pylint: disable=too-many-arguments
-    def register(
+    def register( # noqa: PLR0913
         self,
         func: Callable,
         db_manager: DBManager,
@@ -59,7 +57,6 @@ class WrapperRegistry:
             hashing_function: The hashing function.
             max_unique_instances: The maximum number of unique sample instances for each conditioning.
         """
-
         func_name = func.__qualname__
 
         if func_name in self._registry:
@@ -100,7 +97,6 @@ class WrapperRegistry:
         Returns:
             A list of registered functions.
         """
-
         return list(self._registry.keys())
 
 
@@ -112,7 +108,6 @@ class ArtifactRegistry:
         _artifact_wrapper_factory: Factory for creating artifact wrappers.
         _registry: Dictionary of registered artifacts (both forward and backward tracking).
     """
-
     _artifact_wrapper_factory: ArtifactWrapperFactory
     _registry: Dict[str, Dict[str, Union[ArtifactFunctionWrapper, ArtifactMethodWrapper]]] = field(
         factory=lambda: {"forward": {}, "backward": {}}
@@ -138,7 +133,6 @@ class ArtifactRegistry:
         Raises:
             ValueError: If the direction is not 'forward' or 'backward'.
         """
-
         func_name = func.__qualname__
 
         if func_name in self._registry[direction]:
@@ -168,7 +162,6 @@ class ArtifactRegistry:
             func: The function or method to unregister.
             direction: The direction of the artifact (either 'forward' or 'backward').
         """
-
         func_name = func.__qualname__
         wrapper = self._registry[direction].pop(func_name, None)
 
@@ -186,7 +179,6 @@ def override_func_in_module(func: Callable, func_override: Callable):
         func: The function to override.
         func_override: The function to override with.
     """
-
     func_module = inspect.getmodule(func)
     if is_class_func(func):
         cls_name = func.__qualname__.split(".")[-2]
@@ -203,7 +195,6 @@ def override_func_in_imported_modules(func: Callable, func_override: Callable):
         func: The function to override.
         func_override: The function to override with.
     """
-
     func_id = id(func)
     for module in sys.modules.values():
         if not module or not hasattr(module, "__dict__"):

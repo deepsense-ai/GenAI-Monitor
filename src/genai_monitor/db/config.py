@@ -5,7 +5,7 @@ from sqlalchemy import Engine, create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
 from .schemas.base import BaseModel
-from .schemas.tables import (  # noqa
+from .schemas.tables import (  # noqa: F401
     ConditioningTable,
     ConditioningTypeTable,
     ModelTable,
@@ -22,12 +22,11 @@ class SessionManager:
     _engine: Engine = None
     _session_factory: sessionmaker = None
 
-    def __init__(self, database_url: str = DEFAULT_DATABASE_URL):
+    def __init__(self, database_url: str = DEFAULT_DATABASE_URL): # noqa: ANN204,D107
         self.initialize(database_url=database_url)
 
     def initialize(self, database_url: str = DEFAULT_DATABASE_URL) -> "SessionManager":
-        """
-        Initializes the database engine and session factory. This should be called once on application start.
+        """Initializes the database engine and session factory. This should be called once on application start.
 
         Args:
             database_url: The URL for the database connection. Defaults to sqlite:///genai_eval.db.
@@ -44,12 +43,12 @@ class SessionManager:
 
     @contextmanager
     def session_scope(self) -> Generator[Session, None, None]:
-        """
-        Provide a transactional scope around a series of operations.
-        Commits or rolls back on error.
+        """Provide a transactional scope around a series of operations. Commits or rolls back on error.
+
         Raises:
             Exception: on any error during database transaction
             ConnectionError: if the database connection has not been initialized yet
+
         Yields:
             The database connection session
         """
@@ -58,7 +57,6 @@ class SessionManager:
                 "The connection to the database must be initialized through, SessionManager.initialize()"
             )
 
-        # pylint: disable = E1102
         session = self._session_factory(expire_on_commit=False)
         try:
             yield session

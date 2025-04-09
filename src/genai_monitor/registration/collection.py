@@ -20,8 +20,8 @@ def register_class_collection(
     conditioning_parser: BaseConditioningParser,
     hashing_function: Callable,
 ):
-    """
-    Register classes defined in ClassDefinitionCollection in GenerativeModelListener.
+    """Register classes defined in ClassDefinitionCollection.
+
     Args:
         definition_collection: A collection of definitions of classes to register.
         output_parser: The output parser to use for registration of classes.
@@ -57,8 +57,7 @@ def register_function_collection(
     conditioning_parser: BaseConditioningParser,
     hashing_function: Callable,
 ):
-    """
-    Register functions defined in FunctionDefinitionCollection.
+    """Register functions defined in FunctionDefinitionCollection.
 
     Args:
         definition_collection: A collection of definitions of functions to register.

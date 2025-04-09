@@ -1,3 +1,4 @@
+"""Auto-configuration module for GenAI-Monitor."""
 import os
 
 from loguru import logger
@@ -17,5 +18,4 @@ logger.success(f"Configured Dependency Container with values: {config}")
 logger.debug("User registration module imported.")
 register_user(db_manager=container.db_manager(), runtime_manager=container.runtime_manager())
 
-# pylint: disable=wrong-import-position
-from genai_monitor.registration import auto  # noqa
+from genai_monitor.registration import auto  # noqa: E402, F401

@@ -10,16 +10,16 @@ from genai_monitor.db.schemas.base import BaseModel
 
 @define
 class DBManager:
-    """
-    A database manager class providing basic operations for saving, updating and searching records in the database using
-    SQLAlchemy ORM models.
-    """
+    """A database manager class.
 
+    Class provides basic operations for saving, updating and searching records
+    in the database using SQLAlchemy ORM models.
+    """
     session_manager: SessionManager = None
 
     def save(self, instance: BaseModel) -> BaseModel:
-        """
-        Saves an instance of a model to the database.
+        """Saves an instance of a model to the database.
+
         Args:
             instance: The ORM model instance to be saved.
 
@@ -33,8 +33,8 @@ class DBManager:
             return instance
 
     def search(self, model: Type[BaseModel], filters: Optional[Dict[str, Any]] = None) -> Sequence[Row]:
-        """
-        Searches for records in the database that match the given filters.
+        """Searches for records in the database that match the given filters.
+
         Args:
             model: The ORM model class representing the database table to search.
             filters: Dictionary of filter criteria to locate specific records.
@@ -58,9 +58,11 @@ class DBManager:
         filters: Optional[Dict[str, Any]] = None,
         values: Optional[Dict[str, Any]] = None,
     ) -> Union[BaseModel, Sequence[Row]]:
-        """
-        Updates records in the database. If an instance is provided, it will be updated
+        """Updates records in the database.
+
+        If an instance is provided, it will be updated
         directly. Otherwise, model and filter criteria are used to locate records for updating.
+
         Args:
             instance: An existing ORM model instance to update.
             model: The ORM model class representing the table to update.
@@ -109,8 +111,7 @@ class DBManager:
         target_filters: Optional[Dict[str, Any]] = None,
         join_filters: Optional[Dict[str, Any]] = None,
     ) -> Sequence[Row]:
-        """
-        Performs a join search between two models based on a join condition and optional filters.
+        """Performs a join search between two models based on a join condition and optional filters.
 
         Args:
             target_model: The ORM model class representing the primary table to search.
@@ -137,6 +138,6 @@ class DBManager:
             return results
 
     @staticmethod
-    def _eager_load_instance_relations(instance: BaseModel):
+    def _eager_load_instance_relations(instance: BaseModel): # noqa: ANN205
         for relation in instance.relations:
             getattr(instance, relation)

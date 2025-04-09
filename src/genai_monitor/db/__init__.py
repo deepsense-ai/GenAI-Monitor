@@ -14,7 +14,6 @@ def init_db(database_url: str = "sqlite:///genai_eval.db") -> SessionManager:
     Returns:
         A `SessionManager` object.
     """
-
     return SessionManager(database_url=database_url)
 
 

@@ -1,4 +1,4 @@
-from loguru import logger  # noqa
+from loguru import logger
 
 from genai_monitor.dependencies import DIFFUSERS_AVAILABLE, LITELLM_AVAILABLE, OPENAI_AVAILABLE, TRANSFORMERS_AVAILABLE
 from genai_monitor.injectors.containers import get_container

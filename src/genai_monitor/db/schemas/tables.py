@@ -7,9 +7,7 @@ from .base import BaseModel
 
 
 class ConditioningTypeTable(BaseModel):
-    """
-    Database table representing the type of conditioning.
-    """
+    """Database table representing the type of conditioning."""
 
     __tablename__ = "conditioning_type"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
@@ -17,9 +15,7 @@ class ConditioningTypeTable(BaseModel):
 
 
 class ConditioningTable(BaseModel):
-    """
-    Database table representing the value of conditioning.
-    """
+    """Database table representing the value of conditioning."""
 
     __tablename__ = "conditioning"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
@@ -33,9 +29,7 @@ class ConditioningTable(BaseModel):
 
 
 class SampleTable(BaseModel):
-    """
-    Database table representing the sample - an atomic unit of data in the system.
-    """
+    """Database table representing the sample - an atomic unit of data in the system."""
 
     __tablename__ = "sample"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
@@ -55,9 +49,7 @@ class SampleTable(BaseModel):
 
 
 class ModelTable(BaseModel):
-    """
-    Database table representing the generative model.
-    """
+    """Database table representing the generative model."""
 
     __tablename__ = "model"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
@@ -70,9 +62,7 @@ class ModelTable(BaseModel):
 
 
 class SampleEvaluationMapping(BaseModel):
-    """
-    Database table representing association between an evaluated sample and its evaluation result.
-    """
+    """Database table representing association between an evaluated sample and its evaluation result."""
 
     __tablename__ = "sample_evaluation_mapping"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
@@ -82,8 +72,8 @@ class SampleEvaluationMapping(BaseModel):
 
 
 class ConfigurationTable(BaseModel):
-    """
-    Database table representing system configuration.
+    """Database table representing system configuration.
+
     Default values are set at the database level to ensure consistency across all instances.
     """
 
@@ -100,9 +90,7 @@ class ConfigurationTable(BaseModel):
 
 
 class UserTable(BaseModel):
-    """
-    Database table representing the users.
-    """
+    """Database table representing the users."""
 
     __tablename__ = "user"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
@@ -113,9 +101,7 @@ class UserTable(BaseModel):
 
 
 class ArtifactTable(BaseModel):
-    """
-    Database table representing the artifact - an atomic unit of data in the system.
-    """
+    """Database table representing the artifact - an atomic unit of data in the system."""
 
     __tablename__ = "artifact"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)

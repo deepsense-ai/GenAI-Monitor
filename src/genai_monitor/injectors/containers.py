@@ -1,4 +1,3 @@
-# pylint: disable=import-outside-toplevel
 import os
 from typing import Union
 
@@ -173,8 +172,7 @@ def get_container() -> DependencyContainer:
     Returns:
         The dependency container.
     """
-
-    global _container  # pylint: disable=global-statement
+    global _container # noqa: PLW0603
     if _container is None:
         _container = DependencyContainer()
     return _container
@@ -182,5 +180,5 @@ def get_container() -> DependencyContainer:
 
 def reset_container() -> None:
     """Reset the container to None."""
-    global _container  # pylint: disable=global-statement
+    global _container # noqa: PLW0603
     _container = None

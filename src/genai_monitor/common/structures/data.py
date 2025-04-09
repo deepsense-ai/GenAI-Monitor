@@ -14,9 +14,7 @@ if TYPE_CHECKING:
 
 @define
 class ORMConvertible:
-    """
-    A base class to convert between ORM (database model) instances and dataclass instances.
-    """
+    """A base class to convert between ORM (database model) instances and dataclass instances."""
 
     _orm_cls: ClassVar[Type[BaseModel]]
     _to_orm_excluded_fields: ClassVar[List[str]]
@@ -25,10 +23,11 @@ class ORMConvertible:
 
     @classmethod
     def from_orm(cls, orm_instance: BaseModel) -> "ORMConvertible":
-        """
-        Get a dataclass instance from ORM.
+        """Gets a dataclass instance from ORM.
+
         Args:
             orm_instance: The ORM instance corresponding to the dataclass type.
+
         Returns:
             A dataclass instance.
         """
@@ -37,8 +36,8 @@ class ORMConvertible:
 
     @classmethod
     def _get_field_values_from_orm(cls, orm_instance: BaseModel) -> Dict[str, Any]:
-        """
-        Get values of dataclass fields from its corresponding ORM class.
+        """Gets values of dataclass fields from its corresponding ORM class.
+
         Args:
             orm_instance: The instance of ORM class from SQLAlchemy.
 
@@ -64,8 +63,8 @@ class ORMConvertible:
 
     @classmethod
     def _instantiate_related(cls, field_name: str, value: Union[Dict[str, Any], List[Dict[str, Any]]]) -> Any:
-        """
-        Instantiate related dataclasses from dictionaries.
+        """Instantiate related dataclasses from dictionaries.
+
         Args:
             field_name: The name of the field being instantiated.
             value: The dictionary or list of dictionaries to be converted.
@@ -89,8 +88,8 @@ class ORMConvertible:
         return value
 
     def to_orm(self) -> BaseModel:
-        """
-        Get an ORM object from dataclass.
+        """Get an ORM object from dataclass.
+
         Returns:
             And ORM object corresponding to the dataclass.
         """
@@ -100,8 +99,8 @@ class ORMConvertible:
         return orm_instance
 
     def _get_field_values_from_dataclass(self) -> Dict[str, Any]:
-        """
-        Get values of ORM class fields from the dataclass.
+        """Get values of ORM class fields from the dataclass.
+
         Returns:
             A dictionary mapping the names of ORM class fields to their values fetched from dataclass instance.
         """
@@ -112,19 +111,17 @@ class ORMConvertible:
         }
 
     def _populate_relationships_to_orm(self, orm_instance: BaseModel):
-        """
-        Populate related fields in the ORM instance.
-        Override in subclasses to handle specific relationships.
+        """Populates related fields in the ORM instance. Overrides in subclasses to handle specific relationships.
+
         Args:
             orm_instance: The ORM instance to populate the relationships in
         """
 
 
+
 @define
 class Conditioning(ORMConvertible):
-    """
-    Represents a conditioning in the system and corresponds to ConditioningTable.
-    """
+    """Represents a conditioning in the system and corresponds to ConditioningTable."""
 
     _orm_cls: ClassVar[Type[ConditioningTable]] = ConditioningTable
     _to_orm_excluded_fields: ClassVar[List[str]] = ["type"]
@@ -139,15 +136,13 @@ class Conditioning(ORMConvertible):
     value_metadata: Optional[Dict[str, Any]] = field(default=None)
     samples: Optional[List["Sample"]] = None
 
-    # pylint: disable = C0116,W0613
     @value.validator
-    def validate_value(self, attribute, value):
+    def validate_value(self, attribute, value): # noqa: ANN001,ANN201,ANN401
         if not is_jsonable(value):
             raise NotJsonableError(value)
 
     def _populate_relationships_to_orm(self, orm_instance: BaseModel):
         if self.samples:
-            # pylint: disable=E1133
             orm_instance.samples = [sample.to_orm() for sample in self.samples]
 
     def query(self) -> "ConditioningQuery":
@@ -156,7 +151,6 @@ class Conditioning(ORMConvertible):
         Returns:
             ConditioningQuery: Query interface for this conditioning.
         """
-        # pylint: disable=C0415
         from genai_monitor.query.api import ConditioningQuery
 
         return ConditioningQuery(self)
@@ -164,9 +158,7 @@ class Conditioning(ORMConvertible):
 
 @define
 class User(ORMConvertible):
-    """
-    Represents a user in the system and corresponds to UsersTable.
-    """
+    """Represents a user in the system and corresponds to UsersTable."""
 
     _orm_cls: ClassVar[Type[UserTable]] = UserTable
     _to_orm_excluded_fields: ClassVar[List[str]] = []
@@ -179,9 +171,7 @@ class User(ORMConvertible):
 
 @define
 class Sample(ORMConvertible):
-    """
-    Represents a sample in the system and corresponds to SampleTable.
-    """
+    """Represents a sample in the system and corresponds to SampleTable."""
 
     _orm_cls: ClassVar[Type[SampleTable]] = SampleTable
     _to_orm_excluded_fields: ClassVar[List[str]] = []
@@ -212,7 +202,6 @@ class Sample(ORMConvertible):
         if self.user:
             orm_instance.user = self.user.to_orm()
         if self.artifacts:
-            # pylint: disable=E1133
             orm_instance.artifacts = [artifact.to_orm() for artifact in self.artifacts]
 
     def query(self) -> "SampleQuery":
@@ -221,7 +210,6 @@ class Sample(ORMConvertible):
         Returns:
             SampleQuery: Query interface for this sample.
         """
-        # pylint: disable=C0415
         from genai_monitor.query.api import SampleQuery
 
         return SampleQuery(self)
@@ -229,9 +217,7 @@ class Sample(ORMConvertible):
 
 @define
 class Model(ORMConvertible):
-    """
-    Represents a generative model and corresponds to GeneratorTable.
-    """
+    """Represents a generative model and corresponds to GeneratorTable."""
 
     _orm_cls: ClassVar[Type[ModelTable]] = ModelTable
     _to_orm_excluded_fields: ClassVar[List[str]] = []
@@ -252,7 +238,6 @@ class Model(ORMConvertible):
         Returns:
             GeneratorQuery: Query interface for this generator.
         """
-        # pylint: disable=C0415
         from genai_monitor.query.api import ModelQuery
 
         return ModelQuery(self)
@@ -260,9 +245,7 @@ class Model(ORMConvertible):
 
 @define
 class Artifact(ORMConvertible):
-    """
-    Represents an artifact in the system.
-    """
+    """Represents an artifact in the system."""
 
     _orm_cls: ClassVar[Type[ArtifactTable]] = ArtifactTable
     _to_orm_excluded_fields: ClassVar[List[str]] = []

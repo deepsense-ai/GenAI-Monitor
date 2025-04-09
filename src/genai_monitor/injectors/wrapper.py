@@ -46,7 +46,6 @@ class Wrapper(ABC):
         hashing_function: The hashing function.
         func: The wrapped function or method.
     """
-
     db_manager: DBManager
     persistency_manager: PersistencyManager
     runtime_manager: RuntimeManager
@@ -54,7 +53,7 @@ class Wrapper(ABC):
     conditioning_parser: BaseConditioningParser
     max_unique_instances: int
     hashing_function: Optional[Callable[[Any], str]] = None
-    func: Optional[Callable] = field(init=False)  # pylint: disable=E3701
+    func: Optional[Callable] = field(init=False)
 
     @abstractmethod
     def wrap(self, func: Callable) -> Callable:
@@ -81,6 +80,7 @@ class Wrapper(ABC):
             model_output: The output of the model.
             conditioning: The conditioning.
             generator: The generator.
+            generation_id: The generation id (from 0 to `max_unique_instances` - 1).
             samples_in_conditioning: The samples in conditioning.
         """
         sample = self.output_parser.get_sample_from_model_output(model_output=model_output)
@@ -132,6 +132,7 @@ class Wrapper(ABC):
             model_output: The output of the model.
             conditioning: The conditioning.
             generator: The generator.
+            generation_id: The generation id (from 0 to `max_unique_instances` - 1).
             samples_in_conditioning: The samples in conditioning.
         """
         updates = {
@@ -185,7 +186,6 @@ class Wrapper(ABC):
         Returns:
             The generator and the existing generations.
         """
-
         if hash_value == UNKNOWN_MODEL_HASH:
             logger.error(
                 f"Hashing function failed for {name}."
@@ -245,7 +245,6 @@ class Wrapper(ABC):
         existing_generations = generations_complete + generations_in_progress
         return generator, existing_generations
 
-    # pylint: disable=R1710
     def _return_existing_generation(
         self,
         existing_generations: List[Sample],
@@ -268,7 +267,6 @@ class Wrapper(ABC):
         Raises:
             FileNotFoundError: If the data cannot be loaded from disk.
         """
-
         logger.info("Found existing generations, loading data from disk.")
 
         samples = [sample for sample in existing_generations if Sample.from_orm(sample).generation_id == generation_id]
@@ -314,7 +312,7 @@ class Wrapper(ABC):
 
             if self.persistency_manager.enabled:
                 conditioning.value = self.persistency_manager.load_conditioning(conditioning)
-        else:
+        else: # noqa: PLR5501
             if self.persistency_manager.enabled:
                 value = conditioning.value
                 conditioning.value = None
@@ -342,7 +340,7 @@ class Wrapper(ABC):
             if existing_artifacts:
                 logger.info(f"Artifact {artifact.name} already exists in the database.")
 
-            else:
+            else: # noqa: PLR5501
                 if self.persistency_manager.enabled:
                     value = artifact.value
                     artifact.value = None
@@ -397,7 +395,6 @@ class Wrapper(ABC):
         Returns:
             The placeholder sample with status: "In progress".
         """
-
         sample = Sample(
             conditioning_id=conditioning.id,
             model_id=generator.id,
@@ -423,9 +420,8 @@ class FunctionWrapper(Wrapper):
         Returns:
             Callable: The wrapped function.
         """
-        self.func = deepcopy(func)  # noqa
+        self.func = deepcopy(func)
 
-        # pylint: disable=W9011,W9015,W1113,R0912,E1102
         @wraps(func)
         def wrapped(*args, **kwargs) -> Any:
             function_hash = self.hashing_function(func)
@@ -470,7 +466,7 @@ class FunctionWrapper(Wrapper):
 
                     return model_output
 
-                except Exception as e:  # pylint: disable=W0718
+                except Exception as e:
                     logger.error(f"Could not return existing generation: {e}")
                     logger.info("Generating new sample without sample creation.")
                     return func(*args, **kwargs)
@@ -482,7 +478,6 @@ class FunctionWrapper(Wrapper):
             try:
                 model_output = func(*args, **kwargs)
 
-            # pylint: disable=W0718
             except Exception as e:
                 self.db_manager.update(
                     model=SampleTable,
@@ -510,7 +505,6 @@ class FunctionWrapper(Wrapper):
 class MethodWrapper(Wrapper):
     """Wrapper for class methods."""
 
-    # pylint: disable=R0915,W9015,W9011,W1113,R0912,E1102
     def wrap(self, func: Callable) -> Callable:
         self.func = deepcopy(func)
 
@@ -564,7 +558,6 @@ class MethodWrapper(Wrapper):
             try:
                 model_output = func(obj_self, *args, **kwargs)
 
-            # pylint: disable=W0718
             except Exception as e:
                 self.db_manager.update(
                     SampleTable, {"id": sample_placeholder.id}, {"status": SampleStatus.FAILED.value}
@@ -645,7 +638,6 @@ def is_class_func(func: Callable) -> bool:
     Returns:
         bool: True if the function is a class method, False otherwise.
     """
-
     return get_defining_class(func=func) is not None
 
 
@@ -675,7 +667,6 @@ class ArtifactWrapper(ABC):
         db_manager: The database manager.
         runtime_manager: The runtime manager.
     """
-
     db_manager: DBManager
     persistency_manager: PersistencyManager
     runtime_manager: RuntimeManager
@@ -687,7 +678,6 @@ class ArtifactWrapper(ABC):
             output: The output to add as an artifact.
             name: The name of the artifact.
         """
-
         artifact = Artifact(
             name=name,
             value=json.dumps(output),
@@ -703,7 +693,6 @@ class ArtifactWrapper(ABC):
             name: The name of the artifact.
 
         """
-
         if not self.runtime_manager.latest_sample:
             logger.error("Cannot attach artifact to a sample. No sample found.")
             return
@@ -752,10 +741,8 @@ class ArtifactFunctionWrapper(ArtifactWrapper):
         Returns:
             The wrapped function.
         """
+        self.func = deepcopy(func)
 
-        self.func = deepcopy(func)  # pylint: disable=W0201
-
-        # pylint: disable=W9011,W9015,W1113,R0912,E1102
         @wraps(func)
         def wrapped(*args, **kwargs) -> Any:
             output = func(*args, **kwargs)
@@ -773,10 +760,8 @@ class ArtifactFunctionWrapper(ArtifactWrapper):
         Returns:
             The wrapped function.
         """
+        self.func = deepcopy(func)
 
-        self.func = deepcopy(func)  # pylint: disable=W0201
-
-        # pylint: disable=W9011,W9015,W1113,R0912,E1102
         @wraps(func)
         def wrapped(*args, **kwargs) -> Any:
             output = func(*args, **kwargs)
@@ -798,10 +783,8 @@ class ArtifactMethodWrapper(ArtifactWrapper):
         Returns:
             The wrapped function.
         """
+        self.func = deepcopy(func)
 
-        self.func = deepcopy(func)  # pylint: disable=W0201
-
-        # pylint: disable=W9011,W9015,W1113,R0912,E1102
         @wraps(func)
         def wrapped(obj_self, *args, **kwargs) -> Any:
             output = func(*args, **kwargs)
@@ -819,10 +802,8 @@ class ArtifactMethodWrapper(ArtifactWrapper):
         Returns:
             The wrapped function.
         """
+        self.func = deepcopy(func)
 
-        self.func = deepcopy(func)  # pylint: disable=W0201
-
-        # pylint: disable=W9011,W9015,W1113,R0912,E1102
         @wraps(func)
         def wrapped(obj_self, *args, **kwargs) -> Any:
             output = func(*args, **kwargs)
@@ -834,7 +815,6 @@ class ArtifactMethodWrapper(ArtifactWrapper):
 
 class ArtifactWrapperFactory:
     """Factory for creating wrappers for artifacts."""
-
     def create(
         self,
         func: Callable,

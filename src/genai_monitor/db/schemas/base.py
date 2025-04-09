@@ -6,8 +6,6 @@ Base: DeclarativeBase = declarative_base()
 
 
 class BaseModel(Base, SerializeMixin, ReprMixin):
-    """
-    Base model for all database tables.
-    """
+    """Base model for all database tables."""
 
     __abstract__ = True
