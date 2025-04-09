@@ -34,6 +34,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
+      - name: Install package and dependencies
+        shell: bash
+        run: |
+          uv pip install -e .
+
       - name: Deploy docs
         shell: bash
         run: uv run mkdocs gh-deploy --force
