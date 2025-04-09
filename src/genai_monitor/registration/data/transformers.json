@@ -1,0 +1,613 @@
+{
+    "data": [
+        {
+            "cls_name": "BartForCausalLM",
+            "module_name": "transformers.models.bart.modeling_bart",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "BertLMHeadModel",
+            "module_name": "transformers.models.bert.modeling_bert",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "BertGenerationDecoder",
+            "module_name": "transformers.models.bert_generation.modeling_bert_generation",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "BigBirdForCausalLM",
+            "module_name": "transformers.models.big_bird.modeling_big_bird",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "BigBirdPegasusForCausalLM",
+            "module_name": "transformers.models.bigbird_pegasus.modeling_bigbird_pegasus",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "BioGptForCausalLM",
+            "module_name": "transformers.models.biogpt.modeling_biogpt",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "BlenderbotForCausalLM",
+            "module_name": "transformers.models.blenderbot.modeling_blenderbot",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "BlenderbotSmallForCausalLM",
+            "module_name": "transformers.models.blenderbot_small.modeling_blenderbot_small",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "BloomForCausalLM",
+            "module_name": "transformers.models.bloom.modeling_bloom",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "CamembertForCausalLM",
+            "module_name": "transformers.models.camembert.modeling_camembert",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "LlamaForCausalLM",
+            "module_name": "transformers.models.llama.modeling_llama",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "CodeGenForCausalLM",
+            "module_name": "transformers.models.codegen.modeling_codegen",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "CohereForCausalLM",
+            "module_name": "transformers.models.cohere.modeling_cohere",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "CpmAntForCausalLM",
+            "module_name": "transformers.models.cpmant.modeling_cpmant",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "CTRLLMHeadModel",
+            "module_name": "transformers.models.ctrl.modeling_ctrl",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "Data2VecTextForCausalLM",
+            "module_name": "transformers.models.data2vec.modeling_data2vec_text",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "DbrxForCausalLM",
+            "module_name": "transformers.models.dbrx.modeling_dbrx",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "ElectraForCausalLM",
+            "module_name": "transformers.models.electra.modeling_electra",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "ErnieForCausalLM",
+            "module_name": "transformers.models.ernie.modeling_ernie",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "FalconForCausalLM",
+            "module_name": "transformers.models.falcon.modeling_falcon",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "FalconMambaForCausalLM",
+            "module_name": "transformers.models.falcon_mamba.modeling_falcon_mamba",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "FuyuForCausalLM",
+            "module_name": "transformers.models.fuyu.modeling_fuyu",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "GemmaForCausalLM",
+            "module_name": "transformers.models.gemma.modeling_gemma",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "Gemma2ForCausalLM",
+            "module_name": "transformers.models.gemma2.modeling_gemma2",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "GitForCausalLM",
+            "module_name": "transformers.models.git.modeling_git",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "GPT2LMHeadModel",
+            "module_name": "transformers.models.gpt2.modeling_gpt2",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "GPT2LMHeadModel",
+            "module_name": "transformers.models.gpt2.modeling_gpt2",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "GPTBigCodeForCausalLM",
+            "module_name": "transformers.models.gpt_bigcode.modeling_gpt_bigcode",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "GPTNeoForCausalLM",
+            "module_name": "transformers.models.gpt_neo.modeling_gpt_neo",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "GPTNeoXForCausalLM",
+            "module_name": "transformers.models.gpt_neox.modeling_gpt_neox",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "GPTNeoXJapaneseForCausalLM",
+            "module_name": "transformers.models.gpt_neox_japanese.modeling_gpt_neox_japanese",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "GPTJForCausalLM",
+            "module_name": "transformers.models.gptj.modeling_gptj",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "GraniteForCausalLM",
+            "module_name": "transformers.models.granite.modeling_granite",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "GraniteMoeForCausalLM",
+            "module_name": "transformers.models.granitemoe.modeling_granitemoe",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "JambaForCausalLM",
+            "module_name": "transformers.models.jamba.modeling_jamba",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "JetMoeForCausalLM",
+            "module_name": "transformers.models.jetmoe.modeling_jetmoe",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "LlamaForCausalLM",
+            "module_name": "transformers.models.llama.modeling_llama",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MambaForCausalLM",
+            "module_name": "transformers.models.mamba.modeling_mamba",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "Mamba2ForCausalLM",
+            "module_name": "transformers.models.mamba2.modeling_mamba2",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MarianForCausalLM",
+            "module_name": "transformers.models.marian.modeling_marian",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MBartForCausalLM",
+            "module_name": "transformers.models.mbart.modeling_mbart",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MegaForCausalLM",
+            "module_name": "transformers.models.deprecated.mega.modeling_mega",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MegatronBertForCausalLM",
+            "module_name": "transformers.models.megatron_bert.modeling_megatron_bert",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MistralForCausalLM",
+            "module_name": "transformers.models.mistral.modeling_mistral",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MixtralForCausalLM",
+            "module_name": "transformers.models.mixtral.modeling_mixtral",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MllamaForCausalLM",
+            "module_name": "transformers.models.mllama.modeling_mllama",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MptForCausalLM",
+            "module_name": "transformers.models.mpt.modeling_mpt",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MusicgenForCausalLM",
+            "module_name": "transformers.models.musicgen.modeling_musicgen",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MusicgenMelodyForCausalLM",
+            "module_name": "transformers.models.musicgen_melody.modeling_musicgen_melody",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "MvpForCausalLM",
+            "module_name": "transformers.models.mvp.modeling_mvp",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "NemotronForCausalLM",
+            "module_name": "transformers.models.nemotron.modeling_nemotron",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "OlmoForCausalLM",
+            "module_name": "transformers.models.olmo.modeling_olmo",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "OlmoeForCausalLM",
+            "module_name": "transformers.models.olmoe.modeling_olmoe",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "OpenLlamaForCausalLM",
+            "module_name": "transformers.models.deprecated.open_llama.modeling_open_llama",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "OpenAIGPTLMHeadModel",
+            "module_name": "transformers.models.openai.modeling_openai",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "OPTForCausalLM",
+            "module_name": "transformers.models.opt.modeling_opt",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "PegasusForCausalLM",
+            "module_name": "transformers.models.pegasus.modeling_pegasus",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "PersimmonForCausalLM",
+            "module_name": "transformers.models.persimmon.modeling_persimmon",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "PhiForCausalLM",
+            "module_name": "transformers.models.phi.modeling_phi",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "Phi3ForCausalLM",
+            "module_name": "transformers.models.phi3.modeling_phi3",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "PLBartForCausalLM",
+            "module_name": "transformers.models.plbart.modeling_plbart",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "ProphetNetForCausalLM",
+            "module_name": "transformers.models.prophetnet.modeling_prophetnet",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "QDQBertLMHeadModel",
+            "module_name": "transformers.models.deprecated.qdqbert.modeling_qdqbert",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "Qwen2ForCausalLM",
+            "module_name": "transformers.models.qwen2.modeling_qwen2",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "Qwen2MoeForCausalLM",
+            "module_name": "transformers.models.qwen2_moe.modeling_qwen2_moe",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "RecurrentGemmaForCausalLM",
+            "module_name": "transformers.models.recurrent_gemma.modeling_recurrent_gemma",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "ReformerModelWithLMHead",
+            "module_name": "transformers.models.reformer.modeling_reformer",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "RemBertForCausalLM",
+            "module_name": "transformers.models.rembert.modeling_rembert",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "RobertaForCausalLM",
+            "module_name": "transformers.models.roberta.modeling_roberta",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "RobertaPreLayerNormForCausalLM",
+            "module_name": "transformers.models.roberta_prelayernorm.modeling_roberta_prelayernorm",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "RoCBertForCausalLM",
+            "module_name": "transformers.models.roc_bert.modeling_roc_bert",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "RoFormerForCausalLM",
+            "module_name": "transformers.models.roformer.modeling_roformer",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "RwkvForCausalLM",
+            "module_name": "transformers.models.rwkv.modeling_rwkv",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "Speech2Text2ForCausalLM",
+            "module_name": "transformers.models.deprecated.speech_to_text_2.modeling_speech_to_text_2",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "StableLmForCausalLM",
+            "module_name": "transformers.models.stablelm.modeling_stablelm",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "Starcoder2ForCausalLM",
+            "module_name": "transformers.models.starcoder2.modeling_starcoder2",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "TransfoXLLMHeadModel",
+            "module_name": "transformers.models.deprecated.transfo_xl.modeling_transfo_xl",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "TrOCRForCausalLM",
+            "module_name": "transformers.models.trocr.modeling_trocr",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "WhisperForCausalLM",
+            "module_name": "transformers.models.whisper.modeling_whisper",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "XGLMForCausalLM",
+            "module_name": "transformers.models.xglm.modeling_xglm",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "XLMWithLMHeadModel",
+            "module_name": "transformers.models.xlm.modeling_xlm",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "XLMProphetNetForCausalLM",
+            "module_name": "transformers.models.deprecated.xlm_prophetnet.modeling_xlm_prophetnet",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "XLMRobertaForCausalLM",
+            "module_name": "transformers.models.xlm_roberta.modeling_xlm_roberta",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "XLMRobertaXLForCausalLM",
+            "module_name": "transformers.models.xlm_roberta_xl.modeling_xlm_roberta_xl",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "XLNetLMHeadModel",
+            "module_name": "transformers.models.xlnet.modeling_xlnet",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "XmodForCausalLM",
+            "module_name": "transformers.models.xmod.modeling_xmod",
+            "method_to_wrap": [
+                "generate"
+            ]
+        },
+        {
+            "cls_name": "TextGenerationPipeline",
+            "module_name": "transformers.pipelines.text_generation",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        }
+    ]
+}

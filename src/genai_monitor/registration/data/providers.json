@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "cls_name": "Completions",
+      "module_name": "openai.resources.chat.completions",
+      "method_to_wrap": [
+        "create"
+      ]
+    },
+    {
+      "cls_name": "Completions",
+      "module_name": "openai.resources.completions",
+      "method_to_wrap": [
+        "create"
+      ]
+    },
+    {
+      "cls_name": "Completions",
+      "module_name": "openai.resources.beta.chat.completions",
+      "method_to_wrap": [
+        "parse"
+      ]
+    }
+  ]
+}

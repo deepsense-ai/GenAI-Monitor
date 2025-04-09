@@ -1,0 +1,11 @@
+{
+    "data": [
+        {
+            "cls_name": "LLMMetric",
+            "module_name": "evaluation.llm_judge",
+            "method_to_wrap": [
+                "evaluate_data_point"
+            ]
+        }
+    ]
+}
