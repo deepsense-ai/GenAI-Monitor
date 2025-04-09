@@ -18,6 +18,7 @@ dependencies = [
     "loguru>=0.7.2",
     "mkdocs-autorefs>=1.4.1",
     "mkdocs-click>=0.9.0",
+    "mkdocs-material>=9.6.11",
     "mkdocstrings[python]>=0.29.1",
     "myst-parser>=1.0.0",
     "numpy>=2.0.0",
