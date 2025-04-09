@@ -37,6 +37,7 @@ jobs:
       - name: Install package and dependencies
         shell: bash
         run: |
+          uv venv
           uv pip install -e .
 
       - name: Deploy docs
