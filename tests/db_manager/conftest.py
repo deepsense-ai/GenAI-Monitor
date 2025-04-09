@@ -8,19 +8,19 @@ from genai_monitor.db.schemas.tables import ConditioningTable, ConditioningTypeT
 TEST_DATABASE_URL = "sqlite:///:memory:"
 
 
-@pytest.fixture(scope="function", autouse=True)
+@pytest.fixture(autouse=True)
 def session_manager():
     """Provide a SessionManager instance for use in tests."""
     return SessionManager(database_url=TEST_DATABASE_URL)
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def db_manager(session_manager):
     """Provide a DBManager instance for use in tests."""
     return DBManager(session_manager=session_manager)
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def db_session(session_manager):
     """Provide a SQLAlchemy session for use in tests, with rollback and close at the end."""
     with session_manager.session_scope() as session:
@@ -28,9 +28,10 @@ def db_session(session_manager):
         session.rollback()
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def setup_database_with_data(db_session):
-    """
+    """Database setup.
+
     Populate the test database with initial data, providing tables and records for tests to use.
     Cleanup occurs after all tests have completed.
     """

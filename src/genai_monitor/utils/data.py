@@ -4,8 +4,7 @@ from typing import Optional
 
 
 def get_absolute_path(relative_path: str, relative_to: Optional[str] = None) -> str:
-    """
-    Generate the absolute path for a given relative path.
+    """Generate the absolute path for a given relative path.
 
     If no base path is provided, the function calculates the absolute path relative
     to the location of the current file.

@@ -1,4 +1,3 @@
-# pylint: disable=import-outside-toplevel, redefined-outer-name, ungrouped-imports
 from copy import deepcopy
 from typing import Any, Iterable, Mapping, Optional
 
@@ -8,14 +7,14 @@ from genai_monitor.structures.conditioning_parsers.seed_types import SeedType
 
 
 class TransformersTextGenerationConditioningParser(BaseConditioningParser):
-    """
+    """Transformers Conditioning Parser.
+
     Transformers specfic conditioning parser that creates a Conditioning object
     from all parameters of inference that are convertible to json.
     """
-
     _tracked_seed_types = {SeedType.TORCH}  # Transformers uses PyTorch's random state
 
-    def __init__(self, sample_fields_to_parsing_methods: Optional[Mapping[str, Any]] = None):
+    def __init__(self, sample_fields_to_parsing_methods: Optional[Mapping[str, Any]] = None): # noqa: D107, ANN204
         require_extra("transformers", EXTRAS_REQUIRE)
         super().__init__(sample_fields_to_parsing_methods)
 

@@ -65,6 +65,7 @@ def _init_default_config(session: SessionManager, default_settings: dict) -> Non
 
     Args:
         session: The database session
+        default_settings: The default settings to initialize session.
     """
     current_time = datetime.utcnow().isoformat()
 

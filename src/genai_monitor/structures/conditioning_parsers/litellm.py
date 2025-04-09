@@ -1,5 +1,3 @@
-# pylint: disable=import-outside-toplevel, redefined-outer-name, ungrouped-imports
-
 from copy import deepcopy
 from typing import Any
 
@@ -10,11 +8,10 @@ from genai_monitor.structures.conditioning_parsers.base import BaseConditioningP
 class LiteLLMCompletionConditioningParser(BaseConditioningParser):
     """Conditioning parser for the Lite LLM completion calls."""
 
-    def __init__(self, sample_fields_to_parsing_methods=None):
+    def __init__(self, sample_fields_to_parsing_methods=None): # noqa: ANN204,D107,ANN001
         require_extra("litellm", EXTRAS_REQUIRE)
         super().__init__(sample_fields_to_parsing_methods)
 
-    # pylint: disable=R1710
     def traverse_and_covert_to_jsonable(self, params: Any) -> Jsonable:
         """Recursively traverse the params and convert them to jsonable objects.
 
@@ -37,7 +34,7 @@ class LiteLLMCompletionConditioningParser(BaseConditioningParser):
         if isinstance(params, list):
             return [self.traverse_and_covert_to_jsonable(item) for item in params]
 
-    def parse_func_arguments(self, *args, **kwargs) -> Jsonable:
+    def parse_func_arguments(self, *args, **kwargs) -> Jsonable: # noqa: ANN001, ANN002, ANN003
         """Parses the function arguments and converts them into a jsonable object.
 
         Args:

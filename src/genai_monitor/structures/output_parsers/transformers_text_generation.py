@@ -1,7 +1,6 @@
-# pylint: disable=import-outside-toplevel, redefined-outer-name, ungrouped-imports
 import io
 import json
-import pickle  # nosec CWE-502
+import pickle
 from typing import Any, Dict, List, Union
 
 from genai_monitor.dependencies import EXTRAS_REQUIRE, TRANSFORMERS_AVAILABLE, require_extra
@@ -14,19 +13,19 @@ if TRANSFORMERS_AVAILABLE:
 
 
 class TransformersTextGenerationParser(BaseModelOutputParser[_TextGenerationReturnType]):
-    """
+    """Transformers Text Generation Output Parser.
+
     Parser for serialization of outputs of the following transformers classes:
     - AutoModelForCausalLM
     - TextGenerationPipeline
     """
 
-    def __init__(self):
+    def __init__(self): # noqa: D107, ANN204
         require_extra("transformers", EXTRAS_REQUIRE)
         super().__init__()
 
     def model_output_to_bytes(self, model_output: "_TextGenerationReturnType") -> bytes:
-        """
-        Converts the model output to a byte representation.
+        """Converts the model output to a byte representation.
 
         Args:
             model_output: The model output to convert.
@@ -50,8 +49,7 @@ class TransformersTextGenerationParser(BaseModelOutputParser[_TextGenerationRetu
         raise ValueError(f"Unsupported model output type: {type(model_output).__name__}.")
 
     def bytes_to_model_output(self, databytes: bytes) -> "_TextGenerationReturnType":
-        """
-        Converts a byte representation back into model output.
+        """Converts a byte representation back into model output.
 
         Args:
             databytes: The byte representation of the model output.
@@ -69,11 +67,11 @@ class TransformersTextGenerationParser(BaseModelOutputParser[_TextGenerationRetu
             return json.loads(databytes.decode("utf-8"))
 
     @staticmethod
-    def _validate_single_generation(
+    def _validate_single_generation( # noqa: ANN205
         model_output: Union[Dict[str, Any], torch.Tensor, List[Any]],
     ):
-        """
-        Check if a model output contains a single generation.
+        """Check if a model output contains a single generation.
+
         Raises:
             ValueError: if model output contains more than one generation.
         """

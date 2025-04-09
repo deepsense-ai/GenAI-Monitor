@@ -1,4 +1,3 @@
-# pylint: disable=ungrouped-imports
 from __future__ import annotations
 
 import hashlib
@@ -39,6 +38,7 @@ if TRANSFORMERS_AVAILABLE:
 
     def get_pytorch_model_hash(module: nn.Module, hasher: hashlib._Hash = None) -> str:
         """Hashes the weights of a Pytorch nn.Module.
+
         Args:
             module: The module to hash.
             hasher: The hasher object.
@@ -46,13 +46,11 @@ if TRANSFORMERS_AVAILABLE:
         Returns:
             str: The hash of the model.
         """
-
         if not hasher:
             hasher = hashlib.sha256()
         for param_name, param in module.state_dict().items():
             if param.device == "meta":
                 logger.debug(f"Skipping meta tensor {param_name}")
-                # Skip meta tensors
                 continue
             hasher.update(param.detach().cpu().numpy().tobytes())
         return hasher.hexdigest()
@@ -60,7 +58,7 @@ if TRANSFORMERS_AVAILABLE:
 
 if DIFFUSERS_AVAILABLE:
     from diffusers import DiffusionPipeline
-    from torch import nn  # noqa
+    from torch import nn
 
     def get_diffusers_model_hash(diffusers_model: DiffusionPipeline) -> str:
         """Hashes the components of a DiffusionPipeline class object.
@@ -87,7 +85,6 @@ if DIFFUSERS_AVAILABLE:
             hasher: The hasher object.
             verbose: Whether to log the progress.
         """
-
         if not hasher:
             hasher = hashlib.sha256()
 
@@ -108,7 +105,6 @@ if DIFFUSERS_AVAILABLE:
             component: The component to hash.
             hasher: The hasher object.
         """
-
         if isinstance(component, nn.Module):
             get_pytorch_model_hash(component, hasher)
 
@@ -121,7 +117,7 @@ if DIFFUSERS_AVAILABLE:
                 traverse_and_hash_component(component=subcomponent, hasher=hasher)
 
 
-def default_model_hashing_function(model: Any) -> str | Literal[UNKNOWN_MODEL_HASH]:  # type: ignore
+def default_model_hashing_function(model: Any) -> str | Literal[UNKNOWN_MODEL_HASH]:
     """Default model hashing function.
 
     Args:
@@ -132,14 +128,14 @@ def default_model_hashing_function(model: Any) -> str | Literal[UNKNOWN_MODEL_HA
     """
     try:
         return get_component_hash(model)
-    except Exception as e:  # pylint: disable = W0718
+    except Exception as e:
         logger.error(f"Failed to hash model: {e}")
         return UNKNOWN_MODEL_HASH
 
 
 def get_component_hash(component: Any) -> str:
-    """
-    Creates a hash of a component by including all instance attributes.
+    """Creates a hash of a component by including all instance attributes.
+
     Excludes private attributes (starting with '_') and callable methods.
     Normalizes paths to make the hash machine-independent.
 
@@ -177,16 +173,15 @@ def get_component_hash(component: Any) -> str:
     return hasher.hexdigest()
 
 
-# pylint: disable = W0613
 def get_empty_model_hash(*args, **kwargs) -> Literal["<EMPTY>"]:
-    """
-    Returns an empty model hash, e.g. for API based models that should not be identified by the hash.
+    """Returns an empty model hash, e.g. for API based models that should not be identified by the hash.
+
     Args:
         args: provided for compatibility with other hashing methods
         kwargs: provided for compatibility with other hashing methods
+
     Returns:
         a string denoting an empty model hash.
-
     """
     return EMPTY_MODEL_HASH
 
@@ -196,6 +191,7 @@ def get_function_full_path(func: Callable):
 
     Args:
         func: The function to analyze
+
     Returns:
         str: Full path in format module.function_name
     """

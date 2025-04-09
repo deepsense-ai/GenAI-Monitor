@@ -16,7 +16,7 @@ class PersistencyManager:
     enabled: bool = False
     _configured: bool = False
 
-    def __init__(self, path: Union[str, Path], enabled: bool):
+    def __init__(self, path: Union[str, Path], enabled: bool): # noqa: D107, ANN204
         self.enabled = enabled
         path = path if path is not None else DEFAULT_PERSISTENCY_PATH
 
@@ -38,7 +38,6 @@ class PersistencyManager:
         Raises:
             ValueError: If the configuration file cannot be loaded.
         """
-
         self.enabled = config.enabled
         path = config.path if config.path is not None else DEFAULT_PERSISTENCY_PATH
 
@@ -90,7 +89,6 @@ class PersistencyManager:
             FileNotFoundError: If the binary file for the sample ID is not found.
             ValueError: If the PersistencyManager has not been configured.
         """
-
         if not self.is_configured():
             raise ValueError("PersistencyManager has not been configured.")
 
@@ -135,7 +133,6 @@ class PersistencyManager:
         Raises:
             FileNotFoundError: If the file is not found.
         """
-
         with open(self.path / filename, "rb") as file:
             bytesdata = file.read()
         return bytesdata
@@ -158,7 +155,6 @@ class PersistencyManager:
             ValueError: If the artifact ID is None.
             ValueError: If the PersistencyManager is disabled.
         """
-
         if not self.is_configured():
             raise ValueError("PersistencyManager has not been configured.")
 
@@ -184,7 +180,6 @@ class PersistencyManager:
             FileNotFoundError: If the binary file for the artifact ID is not found.
             ValueError: If the PersistencyManager has not been configured.
         """
-
         if not self.is_configured():
             raise ValueError("PersistencyManager has not been configured.")
 

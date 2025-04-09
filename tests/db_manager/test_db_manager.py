@@ -39,7 +39,7 @@ def test_update_with_model_and_filters(db_manager, db_session, setup_database_wi
 
 
 def test_update_raises_value_error_without_instance_or_model(db_manager):
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError): # noqa: PT011
         db_manager.update(filters={"name": "Sample 1"}, values={"name": "Updated Sample"})
 
 

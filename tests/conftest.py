@@ -23,7 +23,7 @@ def container():
     del container
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def tmp_settings(tmp_path, monkeypatch):
     monkeypatch.setenv("GENAI_EVAL_DB_URL", f"sqlite:///{str(tmp_path / 'test.db')}")
 
@@ -47,7 +47,7 @@ def tmp_settings(tmp_path, monkeypatch):
     }
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def tmp_settings_with_disabled_persistency(tmp_settings):
     tmp_settings["persistency.enabled"]["value"] = "false"
     return tmp_settings
@@ -62,11 +62,11 @@ class DummyPytorchModel(nn.Module):
         return self.fc(x)
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def conditioning_parser_for_tensors():
     class SimpleConditioningParserForTensors(BaseConditioningParser):
         @staticmethod
-        def traverse_and_covert_to_jsonable(params: Dict[str, Any]):
+        def traverse_and_covert_to_jsonable(params: Dict[str, Any]): # noqa: ANN205
             for param, param_value in params.items():
                 if isinstance(param_value, torch.Tensor):
                     params[param] = param_value.tolist()
@@ -81,7 +81,7 @@ def conditioning_parser_for_tensors():
     return SimpleConditioningParserForTensors()
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def output_parser_for_tensors():
     class DummyParserForTensors(BaseModelOutputParser[torch.Tensor]):
         def model_output_to_bytes(self, model_output: torch.Tensor) -> bytes:
@@ -96,7 +96,7 @@ def output_parser_for_tensors():
     return DummyParserForTensors()
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def conditioning_parser_for_torch_models():
     class SimpleConditioningParserForTorchModels(BaseConditioningParser):
         @staticmethod
@@ -110,7 +110,7 @@ def conditioning_parser_for_torch_models():
     return SimpleConditioningParserForTorchModels()
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def get_pytorch_model_params_for_registration():
     def model_output_to_bytes(self, model_output: torch.Tensor) -> bytes:
         buffer = io.BytesIO()
@@ -139,10 +139,10 @@ def get_pytorch_model_params_for_registration():
 
 
 def dummy_callable_func(x: float, y: float):
-    return x + y + random.random()
+    return x + y + random.random() # noqa: S311
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def get_registration_params_for_callable():
     def model_output_to_bytes(x: float) -> bytes:
         return str(x).encode()
@@ -162,7 +162,7 @@ def get_registration_params_for_callable():
     }
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def get_registration_params_for_callable_cached_instances(get_registration_params_for_callable):
     get_registration_params_for_callable["max_unique_instances"] = 3
     return get_registration_params_for_callable
@@ -173,10 +173,10 @@ class DummyClass:
         pass
 
     def dummy_method(self, x: int, y: int, z: int) -> float:
-        return x + y + z + random.random()
+        return x + y + z + random.random() # noqa: S311
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def get_registration_params_for_class():
     def model_output_to_bytes(x: int) -> bytes:
         return str(x).encode()
@@ -197,7 +197,7 @@ def get_registration_params_for_class():
     }
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def get_registration_params_for_class_cached_instances():
     def model_output_to_bytes(x: int) -> bytes:
         return str(x).encode()

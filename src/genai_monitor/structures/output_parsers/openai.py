@@ -1,4 +1,3 @@
-# pylint: disable=import-outside-toplevel, redefined-outer-name, ungrouped-imports
 from genai_monitor.dependencies import EXTRAS_REQUIRE, OPENAI_AVAILABLE, require_extra
 
 if OPENAI_AVAILABLE:
@@ -13,19 +12,16 @@ if OPENAI_AVAILABLE:
     from genai_monitor.utils.data_hashing import BaseType
 
     class OpenAIChatOutputParser(BaseModelOutputParser[Union[Completion, ChatCompletion]]):
-        """
-        An output parser that converts the responses of OpenAI API obtained by the client into samples.
-        """
+        """An output parser that converts the responses of OpenAI API obtained by the client into samples."""
 
         _supported_output_types: List[Type] = [ChatCompletion, Completion]
 
-        def __init__(self):
+        def __init__(self): # noqa: D107, ANN204
             require_extra("openai", EXTRAS_REQUIRE)
             super().__init__()
 
         def model_output_to_bytes(self, model_output: Union[Completion, ChatCompletion]) -> bytes:
-            """
-            Converts the model output to a byte representation.
+            """Converts the model output to a byte representation.
 
             Args:
                 model_output: The model output to convert.
@@ -36,8 +32,7 @@ if OPENAI_AVAILABLE:
             return json.dumps(model_output.to_dict()).encode("utf-8")
 
         def bytes_to_model_output(self, databytes: bytes) -> Union[Completion, ChatCompletion]:
-            """
-            Converts a byte representation back into a model output.
+            """Converts a byte representation back into a model output.
 
             Args:
                 databytes: The byte representation of the model output.
@@ -57,8 +52,8 @@ if OPENAI_AVAILABLE:
             raise TypeError(f"No supported pydantic schema for data {data} of type {type(data)}")
 
         def model_output_to_base_type(self, model_output: T) -> BaseType:
-            """
-            Converts a model output to base supported type.
+            """Converts a model output to base supported type.
+
             Args:
                 model_output: The output of the model to convert.
 
@@ -67,7 +62,6 @@ if OPENAI_AVAILABLE:
 
             Raises:
                 TypeError: if model output is of type other than Completion/ChatCompletion.
-
             """
             if isinstance(model_output, Completion):
                 return model_output.choices[0].text

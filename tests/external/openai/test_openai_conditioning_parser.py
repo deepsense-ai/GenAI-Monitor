@@ -9,7 +9,7 @@ def openai_conditioning_parser():
     return OpenAIConditioningParser()
 
 
-@pytest.fixture()
+@pytest.fixture
 def messages():
     return [
         {"role": "system", "content": "You are a helpful assistant."},
@@ -22,15 +22,14 @@ def messages():
 
 @pytest.fixture
 def openai_completions_kwargs(messages):
-    return dict(
-        messages=messages,
-        model="gpt-4o-mini-2024-07-18",
-        temperature=0.7,
-        logit_bias={"50256": -100},
-        frequency_penalty=NotGiven(),
-        extra_headers={"Authorization": "Bearer token"},
-    )
-
+    return {
+        "messages": messages,
+        "model": "gpt-4o-mini-2024-07-18",
+        "temperature": 0.7,
+        "logit_bias": {"50256": -100},
+        "frequency_penalty": NotGiven(),
+        "extra_headers": {"Authorization": "Bearer token"},
+    }
 
 def test_parse_func_arguments_included_given_fields(messages, openai_conditioning_parser, openai_completions_kwargs):
     result = openai_conditioning_parser.parse_func_arguments(**openai_completions_kwargs)

@@ -19,40 +19,41 @@ from .seed_types import SeedType
 
 
 class BaseConditioningParser(ABC):
-    """
-    Base class for conditioning parsers. Use it to create custom conditioning parsers, not available natively in the
-    library.
+    """Base class for conditioning parsers.
+
+    Use it to create custom conditioning parsers, not available natively in the library.
 
     'parse_func_arguments' is the core method that needs to be overwritten by the subclasses.
     """
-
     _tracked_seed_types: Set[SeedType] = set()  # Override in subclasses to specify which seeds to track
     db_manager: DBManager
     persistency_manager: PersistencyManager
 
-    def __init__(self, sample_fields_to_parsing_methods: Optional[Mapping[str, Any]] = None):
+    def __init__(self, sample_fields_to_parsing_methods: Optional[Mapping[str, Any]] = None): # noqa: ANN204,D107
         self.sample_fields_to_parsing_methods = (
             sample_fields_to_parsing_methods if sample_fields_to_parsing_methods is not None else {}
         )
 
     def parse_conditioning(self, method: Callable, *args, **kwargs) -> Tuple[Conditioning, List[Sample]]:
-        """
-        Parse the execution parameters of a function into a Conditioning object. Inspects the signature of the function
-        and passed arguments/keyword arguments.
+        """Parse the execution parameters of a function into a Conditioning object.
+
+        Inspects the signature of the function and passed arguments/keyword arguments.
+
         Args:
             method: The method
             *args: Arguments of the method.
             **kwargs: Keyword arguments of the method.
+
         Returns:
             A Conditioning object parsed constructed based on the execution of the method.
+
         Raises:
             NotJsonableError: when the parsed arguments cannot be serialized to json.
         """
-
         conditioning_metadata = kwargs.pop(CONDITIONING_METADATA_FIELDNAME, None)
         inference_params = self._get_call_params_with_defaults(method, *args, **kwargs)
         # Get the instance from the self parameter in wrapped_inference_method
-        instance = kwargs.get("self", None)
+        instance = kwargs.get("self")
 
         if instance is not None:
             inference_params["__instance__"] = instance
@@ -120,8 +121,7 @@ class BaseConditioningParser(ABC):
 
     @abstractmethod
     def parse_func_arguments(self, *args, **kwargs) -> Jsonable:
-        """
-        Core function to be overwritten in subclasses.
+        """Core function to be overwritten in subclasses.
 
         Parse func arguments and convert into a jsonable object - the parsing and conversion approach may vary depending
         on the type of func arguments.
@@ -129,6 +129,7 @@ class BaseConditioningParser(ABC):
         Args:
             *args: Arguments of the method.
             **kwargs: Keyword arguments of the method.
+
         Returns:
             Parsed parameters that can be serialized to json.
         """
@@ -181,7 +182,7 @@ class BaseConditioningParser(ABC):
 
 
 class DefaultConditioningParser(BaseConditioningParser):
-    """Default parser that creates a Conditioning object from all parameters of inference that are convertible to json."""
+    """Default parser that creates a Conditioning object from all json convertible parameters of an inference."""
 
     def parse_func_arguments(self, *args, **kwargs) -> Jsonable:
         """Ensures any non-JSON-serializable values are converted to string, thereby bypassing the NotJsonableError.

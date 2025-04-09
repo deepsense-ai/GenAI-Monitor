@@ -16,7 +16,6 @@ def generate_user_hash():
     Returns:
         str: A unique hash generated from the MAC address of the machine.
     """
-
     hash_value = hashlib.sha256(getpass.getuser().encode()).hexdigest() + uuid.UUID(int=uuid.getnode()).hex[-12:]
     return hashlib.sha256(hash_value.encode()).hexdigest()
 
@@ -28,7 +27,6 @@ def register_user(db_manager: DBManager, runtime_manager: RuntimeManager):
         db_manager: The database manager.
         runtime_manager: The runtime manager.
     """
-
     user_hash = generate_user_hash()
 
     existing_user = db_manager.search(

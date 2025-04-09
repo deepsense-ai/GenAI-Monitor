@@ -1,4 +1,3 @@
-# pylint: disable=import-outside-toplevel
 import hashlib
 import io
 from typing import Any, Iterable, Mapping, Optional
@@ -9,14 +8,15 @@ from genai_monitor.structures.conditioning_parsers.seed_types import SeedType
 
 
 class StableDiffusionConditioningParser(BaseConditioningParser):
-    """
+    """Diffusers Conditioning Parser.
+
     Diffusers specfic conditioning parser that creates a Conditioning object
     from all parameters of inference that are convertible to json.
     """
 
     _tracked_seed_types = {SeedType.TORCH, SeedType.DIFFUSERS}
 
-    def __init__(self, sample_fields_to_parsing_methods: Optional[Mapping[str, Any]] = None):
+    def __init__(self, sample_fields_to_parsing_methods: Optional[Mapping[str, Any]] = None): # noqa: D107, ANN204
         require_extra("diffusers", EXTRAS_REQUIRE)
         super().__init__(sample_fields_to_parsing_methods)
 
@@ -30,10 +30,8 @@ class StableDiffusionConditioningParser(BaseConditioningParser):
         Returns:
             Jsonable: The parsed arguments.
         """
-
         parsed_arguments = dict(kwargs)
         serialized = {param: self._serialize_object(val) for param, val in parsed_arguments.items()}
-        # filter out any that serialized to None
         return {k: v for k, v in serialized.items() if v is not None}
 
     @staticmethod

@@ -1,4 +1,3 @@
-# pylint: disable=import-outside-toplevel, redefined-outer-name, ungrouped-imports
 from genai_monitor.dependencies import EXTRAS_REQUIRE, LITELLM_AVAILABLE, require_extra
 
 if LITELLM_AVAILABLE:
@@ -11,7 +10,7 @@ if LITELLM_AVAILABLE:
     class LiteLLMCompletionOutputParser(BaseModelOutputParser):
         """Output parser for the Lite LLM completion calls."""
 
-        def __init__(self):
+        def __init__(self): # noqa: D107, ANN204
             require_extra("litellm", EXTRAS_REQUIRE)
             super().__init__()
 
@@ -26,7 +25,7 @@ if LITELLM_AVAILABLE:
             """
             response = json.loads(databytes)
             model_response = ModelResponse(**response["content"])
-            model_response._hidden_params = response["hidden_params"]  # pylint: disable=protected-access
+            model_response._hidden_params = response["hidden_params"]
             return model_response
 
         def model_output_to_bytes(self, model_output: ModelResponse) -> bytes:
@@ -38,10 +37,9 @@ if LITELLM_AVAILABLE:
             Returns:
                 The byte representation of the model output.
             """
-
             return json.dumps(
                 {
                     "content": model_output.to_dict(),
-                    "hidden_params": model_output._hidden_params,  # pylint: disable=protected-access
+                    "hidden_params": model_output._hidden_params,
                 }
             ).encode("utf-8")

@@ -10,8 +10,7 @@ from genai_monitor.static.extras import EXTRAS_REQUIRE
 
 
 def _check_package_available(package_name: str) -> bool:
-    """
-    Check if a package is available without importing it.
+    """Check if a package is available without importing it.
 
     Args:
         package_name: Name of the package to check
@@ -30,10 +29,8 @@ class VersionComparison(Enum):
     EQUAL = "=="
 
 
-# pylint: disable=too-many-return-statements
 def _check_package_version(package_name: str, version_spec: str) -> bool:
-    """
-    Check if an installed package meets the version requirement.
+    """Check if an installed package meets the version requirement.
 
     Args:
         package_name: Name of the package to check
@@ -86,8 +83,7 @@ def _parse_version(version_str):
 
 
 def _compare_versions(version1: str, version2: str, version_comparison: str) -> int:
-    """
-    Compare two version strings.
+    """Compare two version strings.
 
     Args:
         version1: First version string
@@ -97,7 +93,6 @@ def _compare_versions(version1: str, version2: str, version_comparison: str) -> 
     Returns:
         True if the first version satisfies the comparison with the second version.
     """
-
     v1_parts = _parse_version(version1)
     v2_parts = _parse_version(version2)
 
@@ -125,8 +120,7 @@ def _compare_versions(version1: str, version2: str, version_comparison: str) -> 
 
 
 def is_extra_available(extra_name: str, required_extras: Dict[str, List[Tuple[str, str]]]) -> bool:
-    """
-    Check if all packages for an extra are available with correct versions.
+    """Check if all packages for an extra are available with correct versions.
 
     Args:
         extra_name: Name of the extra to check
@@ -149,8 +143,7 @@ def is_extra_available(extra_name: str, required_extras: Dict[str, List[Tuple[st
 
 
 def require_extra(extra_name: str, required_extras: Dict[str, List[Tuple[str, str]]], raise_error: bool = True) -> bool:
-    """
-    Check if an extra is available and either raise an error or return a boolean.
+    """Check if an extra is available and either raise an error or return a boolean.
 
     Args:
         extra_name: Name of the extra to check
@@ -181,8 +174,7 @@ def require_extra(extra_name: str, required_extras: Dict[str, List[Tuple[str, st
 
 
 def warn_if_extra_unavailable(extra_name: str, required_extras: Dict[str, List[Tuple[str, str]]]) -> None:
-    """
-    Emit a warning if an extra is not available.
+    """Emit a warning if an extra is not available.
 
     Args:
         extra_name: Name of the extra to check
@@ -190,15 +182,14 @@ def warn_if_extra_unavailable(extra_name: str, required_extras: Dict[str, List[T
     """
     if not is_extra_available(extra_name, required_extras):
         package_list = ", ".join(f"{pkg[0]}{pkg[1]}" for pkg in required_extras[extra_name])
-        warnings.warn(
+        warnings.warn( # noqa: B028
             f"The '{extra_name}' functionality requires additional dependencies: {package_list}. "
             f"Some features may not work. Install with: pip install genai_eval[{extra_name}]"
         )
 
 
 def get_missing_packages(extra_name: str, required_extras: Dict[str, Tuple[str, str]]) -> List[str]:
-    """
-    Get a list of missing packages for an extra.
+    """Get a list of missing packages for an extra.
 
     Args:
         extra_name: Name of the extra to check

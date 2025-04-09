@@ -15,10 +15,11 @@ Jsonable = NewType("Jsonable", Any)
 
 
 def get_hash_from_jsonable(jsonable_value: Jsonable) -> str:
-    """
-    Get the hash of the jsonable value.
+    """Get the hash of the jsonable value.
+
     Args:
         jsonable_value: The jsonable value to hash.
+
     Returns:
         The hash of the jsonable value.
     """
@@ -41,8 +42,8 @@ elif TRANSFORMERS_AVAILABLE:
 
 
 def hash_base_type(data: "BaseType") -> str:
-    """
-    Get a SHA256 hash for base types: torch.Tensor, np.ndarray, PIL.Image.Image, str.
+    """Get a SHA256 hash for base types: torch.Tensor, np.ndarray, PIL.Image.Image, str.
+
     Args:
         data: object of type torch.Tensor, np.ndarray, PIL.Image.Image, str.
 

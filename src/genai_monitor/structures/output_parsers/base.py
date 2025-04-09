@@ -17,8 +17,7 @@ class BaseModelOutputParser(ABC, Generic[T]):
 
     @abstractmethod
     def model_output_to_bytes(self, model_output: T) -> bytes:
-        """
-        Converts the model output to a byte representation.
+        """Converts the model output to a byte representation.
 
         Parameters:
             model_output: The model output to convert.
@@ -29,8 +28,7 @@ class BaseModelOutputParser(ABC, Generic[T]):
 
     @abstractmethod
     def bytes_to_model_output(self, databytes: bytes) -> T:
-        """
-        Converts a byte representation back into model output.
+        """Converts a byte representation back into model output.
 
         Parameters:
             databytes: The byte representation of the model output.
@@ -40,8 +38,7 @@ class BaseModelOutputParser(ABC, Generic[T]):
         """
 
     def get_model_output_hash(self, data: T) -> str:
-        """
-        Calculates the hash value of the given data.
+        """Calculates the hash value of the given data.
 
         Parameters:
             data: The data to calculate the hash value for.
@@ -59,8 +56,8 @@ class BaseModelOutputParser(ABC, Generic[T]):
         return hashlib.sha256(data_bytes).hexdigest()
 
     def get_base_type_hash(self, model_output: T) -> str:
-        """
-        Calculate the hash of the base data type stored in the model output.
+        """Calculate the hash of the base data type stored in the model output.
+
         Args:
             model_output: The model outuput to extract the base type from.
 
@@ -71,18 +68,18 @@ class BaseModelOutputParser(ABC, Generic[T]):
         return hash_base_type(data=base_type_data)
 
     def model_output_to_base_type(self, model_output: T) -> BaseType:
-        """
-        Get the base type to calculate the hash upon
+        """Get the base type to calculate the hash upon.
+
         Args:
             model_output: The output of the model to extract the data from
 
-        Returns: One of the base data types supported in the system
+        Returns:
+            One of the base data types supported in the system
         """
         raise NotImplementedError("Method to extract base types from model output not specified.")
 
     def get_sample_from_model_output(self, model_output: T) -> Sample:
-        """
-        Converts the model output to a sample.
+        """Converts the model output to a sample.
 
         Parameters:
             model_output: The model output to convert to a sample.
@@ -96,8 +93,7 @@ class BaseModelOutputParser(ABC, Generic[T]):
         return Sample(data=data_bytes, hash=model_output_hash)
 
     def get_model_output_from_sample(self, sample: Sample) -> T:
-        """
-        Converts the sample to model output.
+        """Converts the sample to model output.
 
         Parameters:
             sample: The sample to convert to model output.

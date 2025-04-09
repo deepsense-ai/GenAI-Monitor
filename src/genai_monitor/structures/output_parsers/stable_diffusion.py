@@ -1,4 +1,3 @@
-# pylint: disable=import-outside-toplevel, redefined-outer-name, ungrouped-imports
 from genai_monitor.dependencies import DIFFUSERS_AVAILABLE, EXTRAS_REQUIRE, require_extra
 
 if DIFFUSERS_AVAILABLE:
@@ -17,13 +16,12 @@ if DIFFUSERS_AVAILABLE:
     class StableDiffusionOutputParser(BaseModelOutputParser[StableDiffusionOutputType]):
         """Output parser for the Stable Diffusion class models."""
 
-        def __init__(self):
+        def __init__(self): # noqa: D107,ANN204
             require_extra("diffusers", EXTRAS_REQUIRE)
             super().__init__()
 
         def model_output_to_bytes(self, model_output: StableDiffusionOutputType) -> bytes:  # type: ignore
-            """
-            Converts the model output to a byte representation.
+            """Converts the model output to a byte representation.
 
             Args:
                 model_output: The model output to convert.
@@ -37,8 +35,7 @@ if DIFFUSERS_AVAILABLE:
             return buffer.getvalue()
 
         def bytes_to_model_output(self, databytes: bytes) -> StableDiffusionOutputType:  # type: ignore
-            """
-            Converts a byte representation back into model output.
+            """Converts a byte representation back into model output.
 
             Args:
                 databytes: The byte representation of the model output.
@@ -50,8 +47,7 @@ if DIFFUSERS_AVAILABLE:
             return StableDiffusionPipelineOutput(images=[image], nsfw_content_detected=[])
 
         def _get_image_from_model_output(self, model_output: StableDiffusionOutputType) -> Image.Image:  # type: ignore
-            """
-            Extracts a single image from the model output.
+            """Extracts a single image from the model output.
 
             Args:
                 model_output: The model output to extract the image from.
@@ -81,9 +77,8 @@ if DIFFUSERS_AVAILABLE:
             return model_output.images[0]
 
         @staticmethod
-        def _contains_single_image(imgs: List[Image.Image]):
-            """
-            Ensures that the model output contains a single image.
+        def _contains_single_image(imgs: List[Image.Image]) -> None:
+            """Ensures that the model output contains a single image.
 
             Args:
                 imgs: A list of images.
