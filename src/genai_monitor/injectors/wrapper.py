@@ -52,7 +52,7 @@ class Wrapper(ABC):
     output_parser: BaseModelOutputParser
     conditioning_parser: BaseConditioningParser
     max_unique_instances: int
-    hashing_function: Optional[Callable[[Any], str]] = None
+    hashing_function: Callable[[Any], str]
     func: Optional[Callable] = field(init=False)
 
     @abstractmethod
@@ -71,8 +71,8 @@ class Wrapper(ABC):
         model_output: Any,
         conditioning: Conditioning,
         generator: Model,
-        generation_id: int = None,
-        samples_in_conditioning: List[Sample] = None,
+        generation_id: Optional[Union[int, None]] = None,
+        samples_in_conditioning: Optional[List[Sample]] = None,
     ):
         """Saves the sample to the database.
 
@@ -122,8 +122,8 @@ class Wrapper(ABC):
         model_output: Any,
         conditioning: Conditioning,
         generator: Model,
-        generation_id: int = None,
-        samples_in_conditioning: List[Sample] = None,
+        generation_id: Optional[int] = None,
+        samples_in_conditioning: Optional[List[Sample]] = None,
     ):
         """Updates sample placeholder with the model output and saves it to the database.
 
@@ -249,7 +249,7 @@ class Wrapper(ABC):
         self,
         existing_generations: List[Sample],
         samples_in_conditioning: List[Sample],
-        generation_id: int = None,
+        generation_id: Optional[int] = None,
         generator: Model = None,
     ) -> Any:
         """Handle existing generations.
@@ -383,7 +383,7 @@ class Wrapper(ABC):
         return version[0].to_dict().get("value")
 
     def _create_sample_placeholder(
-        self, conditioning: Conditioning, generator: Model, generation_id: int = None
+        self, conditioning: Conditioning, generator: Model, generation_id: Optional[int] = None
     ) -> Sample:
         """Create a placeholder for a sample.
 

@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Dict, Union
+from typing import Dict, Optional, Union
 
 from loguru import logger
 
@@ -12,7 +12,7 @@ from genai_monitor.static.constants import DEFAULT_PERSISTENCY_PATH
 class PersistencyManager:
     """Manager for saving and loading model outputs in binary format to disk."""
 
-    path: Path = None
+    path: Path
     enabled: bool = False
     _configured: bool = False
 

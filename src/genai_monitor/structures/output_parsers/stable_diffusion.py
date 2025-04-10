@@ -9,7 +9,7 @@ if DIFFUSERS_AVAILABLE:
 
     from genai_monitor.structures.output_parsers.base import BaseModelOutputParser
 
-    StableDiffusionOutputType = NewType(
+    StableDiffusionOutputType = NewType( # type: ignore
         "StableDiffusionOutputType", Union[StableDiffusionPipelineOutput, Tuple[List[Image.Image], List[bool]]]
     )
 
@@ -58,7 +58,7 @@ if DIFFUSERS_AVAILABLE:
             Raises:
                 ValueError: If the model output is of an unsupported type.
             """
-            if isinstance(model_output, Tuple):
+            if isinstance(model_output, tuple):
                 return self._get_data_from_tuple(model_output)
 
             if isinstance(model_output, StableDiffusionPipelineOutput):

@@ -8,6 +8,7 @@ from dataclasses import fields, is_dataclass
 from functools import wraps
 from types import ModuleType
 from typing import Any, Callable, Dict, List, Optional, Tuple, Type, TypeVar, Union, cast
+import typing
 
 from attrs import asdict, define
 from cattrs import structure
@@ -19,7 +20,7 @@ T = TypeVar("T")
 def _accepts_self(func: Callable) -> bool:
     signature = inspect.signature(func)
     parameters = list(signature.parameters.values())
-    return (parameters and parameters[0].name == "self")
+    return (parameters and parameters[0].name == "self") # type: ignore
 
 def _make_bound_method(f: Callable) -> Callable:
     @wraps(f)
@@ -28,7 +29,7 @@ def _make_bound_method(f: Callable) -> Callable:
 
     return _wrapper
 
-
+@typing.no_type_check
 def _make_cls(cls_name: str, base: Optional[Type[T]] = None, method_mapper: Dict[str, Callable] = None) -> Type[T]:
     method_mapper = method_mapper or {}
     bound_method_mapper = {}
@@ -40,7 +41,7 @@ def _make_cls(cls_name: str, base: Optional[Type[T]] = None, method_mapper: Dict
     if base is None:
         base = object
     cls = type(cls_name, (base,), bound_method_mapper)
-    return cast(Type[T], cls)
+    return cast(Type[T], cls) # type:ignore
 
 
 @define
@@ -110,7 +111,7 @@ class DefinitionCollection:
         Args:
             other: Another `DefinitionCollection` instance to merge.
         """
-        self.data.extend(other.data)
+        self.data.extend(other.data) # type: ignore
 
     def to_json(self, save_path: str):
         """Save the collection as a JSON file.
@@ -228,7 +229,7 @@ def get_method_return_type_from_docstring(method: Any) -> Optional[str]:
     return None
 
 
-def get_class_fields(cls: Type) -> Union[List[str], None]:
+def get_class_fields(cls: Type) -> Union[Dict[str, str], List[str], None]:
     """Get the fields of a class.
 
     Args:
@@ -251,7 +252,7 @@ def get_class_fields(cls: Type) -> Union[List[str], None]:
 
     return None
 
-
+@typing.no_type_check
 def find_class_in_framework_via_fs(base_package: str, target_class: str) -> Optional[Type]:
     """Find a class in a framework by searching the filesystem.
 
@@ -267,7 +268,7 @@ def find_class_in_framework_via_fs(base_package: str, target_class: str) -> Opti
         base_path = os.path.dirname(base_module.__file__)
         for root, _, files in os.walk(base_path):
             for file in files:
-                if file.endswith(".py") and not file.startswith("_"):
+                if file and file.endswith(".py") and not file.startswith("_"):
                     module_rel_path = os.path.relpath(root, base_path)
                     module_name = os.path.splitext(file)[0]
                     if module_rel_path == ".":

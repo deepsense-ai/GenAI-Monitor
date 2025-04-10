@@ -11,7 +11,7 @@ from genai_monitor.dependencies import DIFFUSERS_AVAILABLE, TRANSFORMERS_AVAILAB
 
 BaseType: TypeAlias = Union[str, float, int]
 
-Jsonable = NewType("Jsonable", Any)
+Jsonable = NewType("Jsonable", Any) # type: ignore
 
 
 def get_hash_from_jsonable(jsonable_value: Jsonable) -> str:
@@ -32,13 +32,13 @@ if DIFFUSERS_AVAILABLE:
     import torch
     from PIL import Image
 
-    BaseType: TypeAlias = Union[torch.Tensor, np.ndarray, Image.Image, str, float, int]
+    BaseType: TypeAlias = Union[torch.Tensor, np.ndarray, Image.Image, str, float, int] # type: ignore
 
 elif TRANSFORMERS_AVAILABLE:
     import numpy as np
     import torch
 
-    BaseType: TypeAlias = Union[torch.Tensor, np.ndarray, str, float, int]
+    BaseType: TypeAlias = Union[torch.Tensor, np.ndarray, str, float, int] # type: ignore
 
 
 def hash_base_type(data: "BaseType") -> str:

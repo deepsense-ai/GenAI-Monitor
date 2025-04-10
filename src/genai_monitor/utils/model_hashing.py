@@ -4,7 +4,7 @@ import hashlib
 import json
 from os import PathLike
 from pathlib import Path
-from typing import Any, Callable, Literal
+from typing import Any, Callable, Literal, Optional
 
 from loguru import logger
 
@@ -15,7 +15,7 @@ if TRANSFORMERS_AVAILABLE:
     from torch import nn
     from transformers import PreTrainedModel
 
-    def get_transformers_model_hash(transformers_model: PreTrainedModel, hasher: hashlib._Hash = None) -> str:
+    def get_transformers_model_hash(transformers_model: PreTrainedModel, hasher: Optional[hashlib._Hash] = None) -> str:
         """Hashes the weights of a transformers model.
 
         Args:
@@ -36,7 +36,7 @@ if TRANSFORMERS_AVAILABLE:
 
         return hasher.hexdigest()
 
-    def get_pytorch_model_hash(module: nn.Module, hasher: hashlib._Hash = None) -> str:
+    def get_pytorch_model_hash(module: nn.Module, hasher: Optional[hashlib._Hash] = None) -> str:
         """Hashes the weights of a Pytorch nn.Module.
 
         Args:
@@ -77,7 +77,7 @@ if DIFFUSERS_AVAILABLE:
         pipeline: DiffusionPipeline,
         hasher: hashlib._Hash | None = None,
         verbose: bool = True,
-    ) -> str:
+    ):
         """Hashes the components of a DiffusionPipeline class object.
 
         Args:
@@ -117,7 +117,7 @@ if DIFFUSERS_AVAILABLE:
                 traverse_and_hash_component(component=subcomponent, hasher=hasher)
 
 
-def default_model_hashing_function(model: Any) -> str | Literal[UNKNOWN_MODEL_HASH]:
+def default_model_hashing_function(model: Any) -> str | Literal[UNKNOWN_MODEL_HASH]: # type: ignore
     """Default model hashing function.
 
     Args:

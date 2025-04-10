@@ -1,4 +1,4 @@
-from typing import Any, Callable, Dict, List, Optional, Type
+from typing import Any, Callable, Dict, List, Optional, Type, Union
 
 from dependency_injector.wiring import Provide, inject
 
@@ -31,10 +31,10 @@ def register_class(
     inference_methods: List[str],
     model_output_to_bytes: Callable[[Any], bytes],
     bytes_to_model_output: Callable[[bytes], Any],
-    model_output_to_base_type: Callable[[Any], BaseType] = None,
+    model_output_to_base_type: Optional[Callable[[Any], BaseType]] = None,
     parse_inference_method_arguments: Optional[Callable[[Dict[str, Any]], Jsonable]] = None,
-    model_hashing_function: Callable[[object], str] = None,
-    sample_fields_to_parsing_methods: Dict[str, Callable] = None,
+    model_hashing_function: Optional[Callable[[object], str]] = None,
+    sample_fields_to_parsing_methods: Optional[Dict[str, Callable]] = None,
     max_unique_instances: int = 1,
 ):
     """Registers a class with inference methods.
@@ -97,10 +97,10 @@ def register_function(
     func: Callable,
     model_output_to_bytes: Callable[[Any], bytes],
     bytes_to_model_output: Callable[[bytes], Any],
-    model_output_to_base_type: Callable[[Any], BaseType] = None,
+    model_output_to_base_type: Optional[Callable[[Any], BaseType]] = None,
     parse_inference_method_arguments: Optional[Callable[[Dict[str, Any]], Jsonable]] = None,
-    model_hashing_function: Callable[[object], str] = None,
-    sample_fields_to_parsing_methods: Dict[str, Callable] = None,
+    model_hashing_function: Optional[Callable[[object], str]] = None,
+    sample_fields_to_parsing_methods: Optional[Dict[str, Callable]] = None,
     max_unique_instances: int = 1,
 ):
     """Registers a function.

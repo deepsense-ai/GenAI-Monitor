@@ -5,7 +5,7 @@ from genai_monitor.utils.auto_mode_configuration import load_config
 
 
 class DummyClass:
-    def dummy_method(self, x: int, y: int) -> int:
+    def dummy_method(self, x: float, y: float) -> float:
         return x + y + random.random() # noqa: S311
 
 

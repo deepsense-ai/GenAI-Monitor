@@ -82,7 +82,7 @@ class ORMConvertible:
         if isinstance(value, list) and related_cls:
             return [related_cls(**item) for item in value]
         logger.warning(
-            f"Could not instantiate a related dataclass. "
+            f"Could not instantiate a related dataclass. " # type: ignore
             f"Got value {value} for dataclass type {related_cls.__name__}"
         )
         return value
@@ -126,7 +126,7 @@ class Conditioning(ORMConvertible):
     _orm_cls: ClassVar[Type[ConditioningTable]] = ConditioningTable
     _to_orm_excluded_fields: ClassVar[List[str]] = ["type"]
     _from_orm_excluded_fields: ClassVar[List[str]] = ["type"]
-    _relationship_fields: ClassVar[Dict[str, Type["ORMConvertible"]]] = {"samples": "Sample"}
+    _relationship_fields: ClassVar[Dict[str, Type["ORMConvertible"]]] = {"samples": "Sample"} # type: ignore
 
     id: Optional[int] = None
     type_id: Optional[int] = None
@@ -136,7 +136,7 @@ class Conditioning(ORMConvertible):
     value_metadata: Optional[Dict[str, Any]] = field(default=None)
     samples: Optional[List["Sample"]] = None
 
-    @value.validator
+    @value.validator # type: ignore
     def validate_value(self, attribute, value): # noqa: ANN001,ANN201,ANN401
         if not is_jsonable(value):
             raise NotJsonableError(value)

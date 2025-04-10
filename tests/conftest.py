@@ -181,7 +181,7 @@ def get_registration_params_for_class():
     def model_output_to_bytes(x: int) -> bytes:
         return str(x).encode()
 
-    def bytes_to_model_output(x: bytes) -> int:
+    def bytes_to_model_output(x: bytes) -> float:
         return float(x.decode())
 
     def parse_inference_method_arguments(**kwargs) -> Dict[str, Any]:
@@ -199,10 +199,10 @@ def get_registration_params_for_class():
 
 @pytest.fixture
 def get_registration_params_for_class_cached_instances():
-    def model_output_to_bytes(x: int) -> bytes:
+    def model_output_to_bytes(x: float) -> bytes:
         return str(x).encode()
 
-    def bytes_to_model_output(x: bytes) -> int:
+    def bytes_to_model_output(x: bytes) -> float:
         return float(x.decode())
 
     def parse_inference_method_arguments(**kwargs) -> Dict[str, Any]:

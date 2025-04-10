@@ -135,7 +135,7 @@ class BaseConditioningParser(ABC):
         """
 
     @staticmethod
-    def _get_call_params_with_defaults(func: Type[Callable], *args, **kwargs) -> OrderedDict[str, Any]:
+    def _get_call_params_with_defaults(func: Callable, *args, **kwargs) -> OrderedDict[str, Any]:
         sig = inspect.signature(func)
         if "self" in sig.parameters:
             bound_args = sig.bind_partial(*(None, *args), **kwargs)

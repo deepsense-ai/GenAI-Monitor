@@ -1,5 +1,6 @@
 import importlib.util
 import re
+import typing
 import warnings
 from enum import Enum
 from typing import Dict, List, Tuple
@@ -49,12 +50,12 @@ def _check_package_version(package_name: str, version_spec: str) -> bool:
 
         if version is None:
             try:
-                from importlib.metadata import version as get_version  # pylint: disable=import-outside-toplevel
+                from importlib.metadata import version as get_version
 
                 version = get_version(package_name)
             except (ImportError, ModuleNotFoundError):
                 try:
-                    import pkg_resources  # pylint: disable=import-outside-toplevel
+                    import pkg_resources  # type: ignore
 
                     version = pkg_resources.get_distribution(package_name).version
                 except (ImportError, pkg_resources.DistributionNotFound):
@@ -63,7 +64,7 @@ def _check_package_version(package_name: str, version_spec: str) -> bool:
         for version_comparsion in VersionComparison:
             if version_comparsion.value in version_spec:
                 req_version = version_spec.split(version_comparsion.value)[1].strip()
-                return _compare_versions(version, req_version, version_comparsion)
+                return _compare_versions(version, req_version, version_comparsion.value)
 
         return True
 
@@ -82,7 +83,7 @@ def _parse_version(version_str):
         return [int(part) for part in re.findall(r"\d+", clean_version)]
 
 
-def _compare_versions(version1: str, version2: str, version_comparison: str) -> int:
+def _compare_versions(version1: str, version2: str, version_comparison: str) -> bool:
     """Compare two version strings.
 
     Args:
@@ -187,7 +188,7 @@ def warn_if_extra_unavailable(extra_name: str, required_extras: Dict[str, List[T
             f"Some features may not work. Install with: pip install genai_eval[{extra_name}]"
         )
 
-
+@typing.no_type_check
 def get_missing_packages(extra_name: str, required_extras: Dict[str, Tuple[str, str]]) -> List[str]:
     """Get a list of missing packages for an extra.
 

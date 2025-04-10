@@ -87,7 +87,7 @@ class DBManager:
 
         with self.session_manager.session_scope() as session:
             if instance is not None:
-                for field_name, field_value in values.items():
+                for field_name, field_value in values.items(): # type: ignore
                     setattr(instance, field_name, field_value)
                 session.add(instance)
                 session.commit()
@@ -96,7 +96,7 @@ class DBManager:
             query = session.query(model).filter_by(**filters)
             query_results = query.all()
             for result in query_results:
-                for field_name, field_value in values.items():
+                for field_name, field_value in values.items(): # type: ignore
                     setattr(result, field_name, field_value)
             session.commit()
             for result in query_results:
