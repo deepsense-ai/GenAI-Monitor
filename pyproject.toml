@@ -112,8 +112,10 @@ mypy_path = [
 ]
 disable_error_code = ["call-arg"]
 
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib"
+
 [tool.coverage.run]
 omit = [
-    # omit pytorch-generated files in /tmp
     "/tmp/*",
 ]
