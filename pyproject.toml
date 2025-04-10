@@ -111,3 +111,9 @@ mypy_path = [
     "src/genai_monitor"
 ]
 disable_error_code = ["call-arg"]
+
+[tool.coverage.run]
+omit = [
+    # omit pytorch-generated files in /tmp
+    "/tmp/*",
+]
