@@ -1,7 +1,7 @@
 import inspect
 from abc import ABC, abstractmethod
 from copy import deepcopy
-from typing import Any, Callable, Dict, List, Mapping, Optional, OrderedDict, Set, Tuple, Type
+from typing import Any, Callable, Dict, List, Mapping, Optional, OrderedDict, Set, Tuple
 
 from loguru import logger
 

@@ -7,15 +7,13 @@ import sys
 from dataclasses import fields, is_dataclass
 from functools import wraps
 from types import ModuleType
-from typing import Any, Callable, Dict, List, Optional, Tuple, Type, TypeVar, Union, cast
-import typing
+from typing import Any, Callable, Dict, List, Optional, Tuple, Type, TypeVar, Union, cast, no_type_check
 
 from attrs import asdict, define
 from cattrs import structure
 from loguru import logger
 
 T = TypeVar("T")
-
 
 def _accepts_self(func: Callable) -> bool:
     signature = inspect.signature(func)
@@ -31,7 +29,7 @@ def _make_bound_method(f: Callable) -> Callable:
     return _wrapper
 
 
-@typing.no_type_check
+@no_type_check
 def _make_cls(cls_name: str, base: Optional[Type[T]] = None, method_mapper: Dict[str, Callable] = None) -> Type[T]:
     method_mapper = method_mapper or {}
     bound_method_mapper = {}
@@ -260,7 +258,7 @@ def get_class_fields(cls: Type) -> Union[Dict[str, str], List[str], None]:
     return None
 
 
-@typing.no_type_check
+@no_type_check
 def find_class_in_framework_via_fs(base_package: str, target_class: str) -> Optional[Type]:
     """Find a class in a framework by searching the filesystem.
 
