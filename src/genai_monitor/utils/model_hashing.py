@@ -117,7 +117,7 @@ if DIFFUSERS_AVAILABLE:
                 traverse_and_hash_component(component=subcomponent, hasher=hasher)
 
 
-def default_model_hashing_function(model: Any) -> str | Literal[UNKNOWN_MODEL_HASH]: # type: ignore
+def default_model_hashing_function(model: Any) -> str | Literal[UNKNOWN_MODEL_HASH]:  # type: ignore
     """Default model hashing function.
 
     Args:

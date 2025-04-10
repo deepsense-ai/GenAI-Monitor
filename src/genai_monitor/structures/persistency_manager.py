@@ -16,7 +16,7 @@ class PersistencyManager:
     enabled: bool = False
     _configured: bool = False
 
-    def __init__(self, path: Union[str, Path], enabled: bool): # noqa: D107, ANN204
+    def __init__(self, path: Union[str, Path], enabled: bool):  # noqa: D107, ANN204
         self.enabled = enabled
         path = path if path is not None else DEFAULT_PERSISTENCY_PATH
 

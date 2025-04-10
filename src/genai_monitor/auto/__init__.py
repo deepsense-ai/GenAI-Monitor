@@ -1,4 +1,5 @@
 """Auto-configuration module for GenAI-Monitor."""
+
 import os
 
 from loguru import logger

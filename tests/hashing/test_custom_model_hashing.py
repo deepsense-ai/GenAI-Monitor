@@ -16,6 +16,7 @@ def test_dummy_component_hashing_pytest():
     This test verifies that changing an attribute on a dummy class
     results in a different hash when using get_component_hash.
     """
+
     class DummyComponent:
         def __init__(self, field1, field2):
             self.field1 = field1

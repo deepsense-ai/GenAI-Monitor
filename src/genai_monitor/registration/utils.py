@@ -20,14 +20,16 @@ T = TypeVar("T")
 def _accepts_self(func: Callable) -> bool:
     signature = inspect.signature(func)
     parameters = list(signature.parameters.values())
-    return (parameters and parameters[0].name == "self") # type: ignore
+    return parameters and parameters[0].name == "self"  # type: ignore
+
 
 def _make_bound_method(f: Callable) -> Callable:
     @wraps(f)
-    def _wrapper(self, *args, **kwargs): # noqa: ANN001,ANN002, ANN003
+    def _wrapper(self, *args, **kwargs):  # noqa: ANN001,ANN002, ANN003
         return f(*args, **kwargs)
 
     return _wrapper
+
 
 @typing.no_type_check
 def _make_cls(cls_name: str, base: Optional[Type[T]] = None, method_mapper: Dict[str, Callable] = None) -> Type[T]:
@@ -41,7 +43,7 @@ def _make_cls(cls_name: str, base: Optional[Type[T]] = None, method_mapper: Dict
     if base is None:
         base = object
     cls = type(cls_name, (base,), bound_method_mapper)
-    return cast(Type[T], cls) # type:ignore
+    return cast(Type[T], cls)  # type:ignore
 
 
 @define
@@ -53,6 +55,7 @@ class ClassDefinition:
         module_name: The name of the module containing the class.
         method_to_wrap: The method to wrap within the class.
     """
+
     cls_name: str
     module_name: str
     method_to_wrap: List[str]
@@ -83,6 +86,7 @@ class FunctionDefinition:
         function_name: The name of the function.
         module_name: The name of the module containing the function.
     """
+
     function_name: str
     module_name: str
 
@@ -103,6 +107,7 @@ class FunctionDefinition:
 @define
 class DefinitionCollection:
     """A collection of definitions to observe."""
+
     data: Union[List[ClassDefinition], List[FunctionDefinition]]
 
     def merge(self, other: "DefinitionCollection"):
@@ -111,7 +116,7 @@ class DefinitionCollection:
         Args:
             other: Another `DefinitionCollection` instance to merge.
         """
-        self.data.extend(other.data) # type: ignore
+        self.data.extend(other.data)  # type: ignore
 
     def to_json(self, save_path: str):
         """Save the collection as a JSON file.
@@ -126,6 +131,7 @@ class DefinitionCollection:
 @define
 class ClassDefinitionCollection(DefinitionCollection):
     """A collection of class definitions."""
+
     data: List[ClassDefinition]
 
     @classmethod
@@ -147,6 +153,7 @@ class ClassDefinitionCollection(DefinitionCollection):
 @define
 class FunctionDefinitionCollection(DefinitionCollection):
     """A collection of function definitions."""
+
     data: List[FunctionDefinition]
 
     @classmethod
@@ -251,6 +258,7 @@ def get_class_fields(cls: Type) -> Union[Dict[str, str], List[str], None]:
         return fields_dict if fields_dict else None
 
     return None
+
 
 @typing.no_type_check
 def find_class_in_framework_via_fs(base_package: str, target_class: str) -> Optional[Type]:

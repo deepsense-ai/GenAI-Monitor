@@ -183,10 +183,11 @@ def warn_if_extra_unavailable(extra_name: str, required_extras: Dict[str, List[T
     """
     if not is_extra_available(extra_name, required_extras):
         package_list = ", ".join(f"{pkg[0]}{pkg[1]}" for pkg in required_extras[extra_name])
-        warnings.warn( # noqa: B028
+        warnings.warn(  # noqa: B028
             f"The '{extra_name}' functionality requires additional dependencies: {package_list}. "
             f"Some features may not work. Install with: pip install genai_eval[{extra_name}]"
         )
+
 
 @typing.no_type_check
 def get_missing_packages(extra_name: str, required_extras: Dict[str, Tuple[str, str]]) -> List[str]:

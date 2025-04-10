@@ -5,10 +5,11 @@ from genai_monitor.structures.conditioning_parsers.seed_types import SeedType
 
 class OpenAIConditioningParser(BaseConditioningParser):
     """Parser inferring conditioning values from parameters of OpenAI().chat.completions.create()."""
+
     _excluded = ["extra_headers", "extra_query", "extra_body"]
     _tracked_seed_types = {SeedType.OPENAI}  # OpenAI API supports seed parameter
 
-    def __init__(self, sample_fields_to_parsing_methods=None): # noqa: D107, ANN204
+    def __init__(self, sample_fields_to_parsing_methods=None):  # noqa: D107, ANN204
         require_extra("openai", EXTRAS_REQUIRE)
         super().__init__(sample_fields_to_parsing_methods)
 

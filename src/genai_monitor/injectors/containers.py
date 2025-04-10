@@ -172,7 +172,7 @@ def get_container() -> DependencyContainer:
     Returns:
         The dependency container.
     """
-    global _container # noqa: PLW0603
+    global _container  # noqa: PLW0603
     if _container is None:
         _container = DependencyContainer()
     return _container
@@ -180,5 +180,5 @@ def get_container() -> DependencyContainer:
 
 def reset_container() -> None:
     """Reset the container to None."""
-    global _container # noqa: PLW0603
+    global _container  # noqa: PLW0603
     _container = None

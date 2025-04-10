@@ -16,7 +16,7 @@ if OPENAI_AVAILABLE:
 
         _supported_output_types: List[Type] = [ChatCompletion, Completion]
 
-        def __init__(self): # noqa: D107, ANN204
+        def __init__(self):  # noqa: D107, ANN204
             require_extra("openai", EXTRAS_REQUIRE)
             super().__init__()
 

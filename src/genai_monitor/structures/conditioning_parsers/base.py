@@ -25,11 +25,12 @@ class BaseConditioningParser(ABC):
 
     'parse_func_arguments' is the core method that needs to be overwritten by the subclasses.
     """
+
     _tracked_seed_types: Set[SeedType] = set()  # Override in subclasses to specify which seeds to track
     db_manager: DBManager
     persistency_manager: PersistencyManager
 
-    def __init__(self, sample_fields_to_parsing_methods: Optional[Mapping[str, Any]] = None): # noqa: ANN204,D107
+    def __init__(self, sample_fields_to_parsing_methods: Optional[Mapping[str, Any]] = None):  # noqa: ANN204,D107
         self.sample_fields_to_parsing_methods = (
             sample_fields_to_parsing_methods if sample_fields_to_parsing_methods is not None else {}
         )

@@ -9,14 +9,14 @@ if DIFFUSERS_AVAILABLE:
 
     from genai_monitor.structures.output_parsers.base import BaseModelOutputParser
 
-    StableDiffusionOutputType = NewType( # type: ignore
+    StableDiffusionOutputType = NewType(  # type: ignore
         "StableDiffusionOutputType", Union[StableDiffusionPipelineOutput, Tuple[List[Image.Image], List[bool]]]
     )
 
     class StableDiffusionOutputParser(BaseModelOutputParser[StableDiffusionOutputType]):
         """Output parser for the Stable Diffusion class models."""
 
-        def __init__(self): # noqa: D107,ANN204
+        def __init__(self):  # noqa: D107,ANN204
             require_extra("diffusers", EXTRAS_REQUIRE)
             super().__init__()
 

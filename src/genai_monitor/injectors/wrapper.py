@@ -46,6 +46,7 @@ class Wrapper(ABC):
         hashing_function: The hashing function.
         func: The wrapped function or method.
     """
+
     db_manager: DBManager
     persistency_manager: PersistencyManager
     runtime_manager: RuntimeManager
@@ -312,7 +313,7 @@ class Wrapper(ABC):
 
             if self.persistency_manager.enabled:
                 conditioning.value = self.persistency_manager.load_conditioning(conditioning)
-        else: # noqa: PLR5501
+        else:  # noqa: PLR5501
             if self.persistency_manager.enabled:
                 value = conditioning.value
                 conditioning.value = None
@@ -340,7 +341,7 @@ class Wrapper(ABC):
             if existing_artifacts:
                 logger.info(f"Artifact {artifact.name} already exists in the database.")
 
-            else: # noqa: PLR5501
+            else:  # noqa: PLR5501
                 if self.persistency_manager.enabled:
                     value = artifact.value
                     artifact.value = None
@@ -667,6 +668,7 @@ class ArtifactWrapper(ABC):
         db_manager: The database manager.
         runtime_manager: The runtime manager.
     """
+
     db_manager: DBManager
     persistency_manager: PersistencyManager
     runtime_manager: RuntimeManager
@@ -815,6 +817,7 @@ class ArtifactMethodWrapper(ArtifactWrapper):
 
 class ArtifactWrapperFactory:
     """Factory for creating wrappers for artifacts."""
+
     def create(
         self,
         func: Callable,

@@ -22,7 +22,7 @@ class SessionManager:
     _engine: Engine = None
     _session_factory: sessionmaker = None
 
-    def __init__(self, database_url: str = DEFAULT_DATABASE_URL): # noqa: ANN204,D107
+    def __init__(self, database_url: str = DEFAULT_DATABASE_URL):  # noqa: ANN204,D107
         self.initialize(database_url=database_url)
 
     def initialize(self, database_url: str = DEFAULT_DATABASE_URL) -> "SessionManager":

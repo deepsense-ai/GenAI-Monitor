@@ -44,6 +44,7 @@ def get_model_by_id(model_id: int) -> Optional[Model]:
 
 class SampleQuery:
     """Query interface for samples."""
+
     def __init__(self, sample: Sample):
         self._sample = sample
 

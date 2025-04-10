@@ -20,7 +20,7 @@ class TransformersTextGenerationParser(BaseModelOutputParser[_TextGenerationRetu
     - TextGenerationPipeline
     """
 
-    def __init__(self): # noqa: D107, ANN204
+    def __init__(self):  # noqa: D107, ANN204
         require_extra("transformers", EXTRAS_REQUIRE)
         super().__init__()
 
@@ -67,7 +67,7 @@ class TransformersTextGenerationParser(BaseModelOutputParser[_TextGenerationRetu
             return json.loads(databytes.decode("utf-8"))
 
     @staticmethod
-    def _validate_single_generation( # noqa: ANN205
+    def _validate_single_generation(  # noqa: ANN205
         model_output: Union[Dict[str, Any], torch.Tensor, List[Any]],
     ):
         """Check if a model output contains a single generation.

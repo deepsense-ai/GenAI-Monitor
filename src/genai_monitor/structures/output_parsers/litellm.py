@@ -10,7 +10,7 @@ if LITELLM_AVAILABLE:
     class LiteLLMCompletionOutputParser(BaseModelOutputParser):
         """Output parser for the Lite LLM completion calls."""
 
-        def __init__(self): # noqa: D107, ANN204
+        def __init__(self):  # noqa: D107, ANN204
             require_extra("litellm", EXTRAS_REQUIRE)
             super().__init__()
 

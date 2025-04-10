@@ -15,6 +15,7 @@ class DBManager:
     Class provides basic operations for saving, updating and searching records
     in the database using SQLAlchemy ORM models.
     """
+
     session_manager: SessionManager = None
 
     def save(self, instance: BaseModel) -> BaseModel:
@@ -87,7 +88,7 @@ class DBManager:
 
         with self.session_manager.session_scope() as session:
             if instance is not None:
-                for field_name, field_value in values.items(): # type: ignore
+                for field_name, field_value in values.items():  # type: ignore
                     setattr(instance, field_name, field_value)
                 session.add(instance)
                 session.commit()
@@ -96,7 +97,7 @@ class DBManager:
             query = session.query(model).filter_by(**filters)
             query_results = query.all()
             for result in query_results:
-                for field_name, field_value in values.items(): # type: ignore
+                for field_name, field_value in values.items():  # type: ignore
                     setattr(result, field_name, field_value)
             session.commit()
             for result in query_results:
@@ -138,6 +139,6 @@ class DBManager:
             return results
 
     @staticmethod
-    def _eager_load_instance_relations(instance: BaseModel): # noqa: ANN205
+    def _eager_load_instance_relations(instance: BaseModel):  # noqa: ANN205
         for relation in instance.relations:
             getattr(instance, relation)

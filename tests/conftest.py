@@ -66,7 +66,7 @@ class DummyPytorchModel(nn.Module):
 def conditioning_parser_for_tensors():
     class SimpleConditioningParserForTensors(BaseConditioningParser):
         @staticmethod
-        def traverse_and_covert_to_jsonable(params: Dict[str, Any]): # noqa: ANN205
+        def traverse_and_covert_to_jsonable(params: Dict[str, Any]):  # noqa: ANN205
             for param, param_value in params.items():
                 if isinstance(param_value, torch.Tensor):
                     params[param] = param_value.tolist()
@@ -139,7 +139,7 @@ def get_pytorch_model_params_for_registration():
 
 
 def dummy_callable_func(x: float, y: float):
-    return x + y + random.random() # noqa: S311
+    return x + y + random.random()  # noqa: S311
 
 
 @pytest.fixture
@@ -173,7 +173,7 @@ class DummyClass:
         pass
 
     def dummy_method(self, x: int, y: int, z: int) -> float:
-        return x + y + z + random.random() # noqa: S311
+        return x + y + z + random.random()  # noqa: S311
 
 
 @pytest.fixture

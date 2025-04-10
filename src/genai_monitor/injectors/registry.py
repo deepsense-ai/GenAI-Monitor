@@ -31,10 +31,11 @@ class WrapperRegistry:
         _wrapper_factory: Factory for creating wrappers.
         _registry: Dictionary of registered wrappers.
     """
+
     _wrapper_factory: WrapperFactory
     _registry: Dict[str, Union[FunctionWrapper, MethodWrapper]] = field(factory=dict)
 
-    def register( # noqa: PLR0913
+    def register(  # noqa: PLR0913
         self,
         func: Callable,
         db_manager: DBManager,
@@ -108,6 +109,7 @@ class ArtifactRegistry:
         _artifact_wrapper_factory: Factory for creating artifact wrappers.
         _registry: Dictionary of registered artifacts (both forward and backward tracking).
     """
+
     _artifact_wrapper_factory: ArtifactWrapperFactory
     _registry: Dict[str, Dict[str, Union[ArtifactFunctionWrapper, ArtifactMethodWrapper]]] = field(
         factory=lambda: {"forward": {}, "backward": {}}

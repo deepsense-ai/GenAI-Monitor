@@ -16,7 +16,7 @@ class StableDiffusionConditioningParser(BaseConditioningParser):
 
     _tracked_seed_types = {SeedType.TORCH, SeedType.DIFFUSERS}
 
-    def __init__(self, sample_fields_to_parsing_methods: Optional[Mapping[str, Any]] = None): # noqa: D107, ANN204
+    def __init__(self, sample_fields_to_parsing_methods: Optional[Mapping[str, Any]] = None):  # noqa: D107, ANN204
         require_extra("diffusers", EXTRAS_REQUIRE)
         super().__init__(sample_fields_to_parsing_methods)
 

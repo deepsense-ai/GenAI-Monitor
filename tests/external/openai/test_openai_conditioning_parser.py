@@ -31,6 +31,7 @@ def openai_completions_kwargs(messages):
         "extra_headers": {"Authorization": "Bearer token"},
     }
 
+
 def test_parse_func_arguments_included_given_fields(messages, openai_conditioning_parser, openai_completions_kwargs):
     result = openai_conditioning_parser.parse_func_arguments(**openai_completions_kwargs)
     assert result["messages"] == messages
