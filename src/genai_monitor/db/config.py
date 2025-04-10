@@ -1,5 +1,5 @@
 from contextlib import contextmanager
-from typing import Generator
+from typing import Generator, Optional
 
 from sqlalchemy import Engine, create_engine
 from sqlalchemy.orm import Session, sessionmaker
@@ -19,8 +19,8 @@ DEFAULT_DATABASE_URL = "sqlite:///genai_eval.db"
 class SessionManager:
     """Manages the database engine and provides session management."""
 
-    _engine: Engine = None
-    _session_factory: sessionmaker = None
+    _engine: Optional[Engine] = None
+    _session_factory: Optional[sessionmaker] = None
 
     def __init__(self, database_url: str = DEFAULT_DATABASE_URL):  # noqa: ANN204,D107
         self.initialize(database_url=database_url)

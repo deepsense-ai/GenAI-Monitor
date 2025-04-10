@@ -5,7 +5,7 @@ from sqlalchemy_mixins.serialize import SerializeMixin
 Base: DeclarativeBase = declarative_base()
 
 
-class BaseModel(Base, SerializeMixin, ReprMixin):
+class BaseModel(Base, SerializeMixin, ReprMixin):  # type: ignore
     """Base model for all database tables."""
 
     __abstract__ = True

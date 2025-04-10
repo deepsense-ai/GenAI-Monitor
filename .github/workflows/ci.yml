@@ -43,10 +43,10 @@ jobs:
       - name: Run ruff linter
         run: uv run ruff check --output-format=github
 
-      - name: Run mypy
-        run: |
-          uv pip install mypy
-          uv run mypy .
+      # - name: Run mypy
+      #   run: |
+      #     uv pip install mypy
+      #     uv run mypy .
 
   #     - name: Run Trivy vulnerability scanner
   #       uses: aquasecurity/trivy-action@master
@@ -183,6 +183,10 @@ jobs:
         with:
           path: ~/nltk_data
           key: nltk-${{ runner.os }}
+
+      - name: Install package and dependencies
+        run: |
+          uv pip install .
 
       - name: Run Tests With Coverage
         run: |

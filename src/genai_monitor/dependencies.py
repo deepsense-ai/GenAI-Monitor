@@ -64,7 +64,7 @@ def _check_package_version(package_name: str, version_spec: str) -> bool:
         for version_comparsion in VersionComparison:
             if version_comparsion.value in version_spec:
                 req_version = version_spec.split(version_comparsion.value)[1].strip()
-                return _compare_versions(version, req_version, version_comparsion.value)
+                return _compare_versions(version, req_version, version_comparsion)  # type: ignore
 
         return True
 

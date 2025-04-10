@@ -590,7 +590,7 @@ class WrapperFactory:
         runtime_manager: RuntimeManager,
         output_parser: BaseModelOutputParser,
         conditioning_parser: BaseConditioningParser,
-        hashing_function: Optional[Callable[[object], str]] = None,
+        hashing_function: Callable[[object], str],
         max_unique_instances: int = 1,
     ) -> Union[FunctionWrapper, MethodWrapper]:
         """Creates a wrapper for a function or method.

@@ -18,7 +18,7 @@ def _get_db_url() -> str:
     Returns:
         str: The database URL.
     """
-    return os.getenv("GENAI_EVAL_DB_URL", "sqlite:///genai_eval.db")
+    return os.getenv("GENAI_MONITOR_DB_URL", "sqlite:///genai_monitor.db")
 
 
 def _get_persistency_path() -> str:
@@ -27,7 +27,7 @@ def _get_persistency_path() -> str:
     Returns:
         str: The persistency path.
     """
-    return os.getenv("GENAI_EVAL_PERSISTENCY_PATH", DEFAULT_PERSISTENCY_PATH)
+    return os.getenv("GENAI_MONITOR_PERSISTENCY_PATH", DEFAULT_PERSISTENCY_PATH)
 
 
 def _get_database_version() -> str:

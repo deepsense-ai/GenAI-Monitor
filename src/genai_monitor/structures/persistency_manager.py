@@ -26,8 +26,7 @@ class PersistencyManager:
 
         self._configured = True
         status = "enabled" if self.enabled else "disabled"
-
-        logger.info(f"PersistencyManager configured in {status} mode with path: {self.path}.")
+        logger.info(f"PersistencyManager configured in {status} mode.{f' Path: {self.path}' if self.enabled else ''}")
 
     def configure(self, config: PersistencyManagerConfig):
         """Configures the persistency manager.
