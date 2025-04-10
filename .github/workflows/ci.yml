@@ -186,6 +186,7 @@ jobs:
 
       - name: Install package and dependencies
         run: |
+          uv venv
           uv pip install .
 
       - name: Run Tests With Coverage
