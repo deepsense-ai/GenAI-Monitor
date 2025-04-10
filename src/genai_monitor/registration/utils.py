@@ -15,6 +15,7 @@ from loguru import logger
 
 T = TypeVar("T")
 
+
 def _accepts_self(func: Callable) -> bool:
     signature = inspect.signature(func)
     parameters = list(signature.parameters.values())
