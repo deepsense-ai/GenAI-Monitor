@@ -34,7 +34,10 @@ litellm = [
 
 [dependency-groups]
 dev = [
+    "mkdocs-autorefs>=1.4.1",
     "mkdocs-click>=0.9.0",
+    "mkdocs-material>=9.6.11",
+    "mkdocstrings[python]>=0.29.1",
     "pytest>=8.3.5",
     "ruff>=0.11.4",
 ]
