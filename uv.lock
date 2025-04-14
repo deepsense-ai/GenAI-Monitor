@@ -569,14 +569,20 @@ transformers = [
 [package.dev-dependencies]
 dev = [
     { name = "coverage" },
+    { name = "diffusers" },
+    { name = "litellm" },
     { name = "mkdocs-autorefs" },
     { name = "mkdocs-click" },
     { name = "mkdocs-material" },
     { name = "mkdocstrings", extra = ["python"] },
+    { name = "openai" },
     { name = "pre-commit" },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "ruff" },
+    { name = "sentencepiece" },
+    { name = "torch" },
+    { name = "transformers" },
 ]
 
 [package.metadata]
@@ -602,14 +608,20 @@ provides-extras = ["diffusers", "transformers", "openai", "litellm"]
 [package.metadata.requires-dev]
 dev = [
     { name = "coverage", specifier = ">=7.3.2" },
+    { name = "diffusers", specifier = ">=0.31.0" },
+    { name = "litellm", specifier = ">=1.60.2" },
     { name = "mkdocs-autorefs", specifier = ">=1.4.1" },
     { name = "mkdocs-click", specifier = ">=0.9.0" },
     { name = "mkdocs-material", specifier = ">=9.6.11" },
     { name = "mkdocstrings", extras = ["python"], specifier = ">=0.29.1" },
+    { name = "openai", specifier = ">=1.55.0" },
     { name = "pre-commit", specifier = ">=4.2.0" },
     { name = "pytest", specifier = ">=8.3.5" },
     { name = "pytest-cov", specifier = ">=6.1.1" },
     { name = "ruff", specifier = ">=0.11.4" },
+    { name = "sentencepiece", specifier = ">=0.1.96" },
+    { name = "torch", specifier = ">=1.10.0" },
+    { name = "transformers", specifier = ">=4.46.2" },
 ]
 
 [[package]]

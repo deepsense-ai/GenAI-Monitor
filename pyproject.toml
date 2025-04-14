@@ -34,6 +34,7 @@ litellm = [
 
 [dependency-groups]
 dev = [
+    # Development tools
     "mkdocs-autorefs>=1.4.1",
     "mkdocs-click>=0.9.0",
     "mkdocs-material>=9.6.11",
@@ -42,6 +43,15 @@ dev = [
     "pytest-cov>=6.1.1",
     "pre-commit>=4.2.0",
     "ruff>=0.11.4",
+    "coverage>=7.3.2",
+
+    # Include all other optional dependencies
+    "diffusers>=0.31.0",
+    "transformers>=4.46.2",
+    "torch>=1.10.0",
+    "sentencepiece>=0.1.96",
+    "openai>=1.55.0",
+    "litellm>=1.60.2",
 ]
 
 [tool.ruff]
