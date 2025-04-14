@@ -12,7 +12,7 @@ class LiteLLMCompletionConditioningParser(BaseConditioningParser):
         require_extra("litellm", EXTRAS_REQUIRE)
         super().__init__(sample_fields_to_parsing_methods)
 
-    def traverse_and_covert_to_jsonable(self, params: Any) -> Jsonable:
+    def traverse_and_covert_to_jsonable(self, params: Any) -> Jsonable:  # type: ignore
         """Recursively traverse the params and convert them to jsonable objects.
 
         Args:
@@ -30,9 +30,9 @@ class LiteLLMCompletionConditioningParser(BaseConditioningParser):
         if callable(params):
             return params.__name__ + "_" + str(hash(params))
         if isinstance(params, dict):
-            return {k: self.traverse_and_covert_to_jsonable(v) for k, v in params.items()}
+            return {k: self.traverse_and_covert_to_jsonable(v) for k, v in params.items()}  # type: ignore
         if isinstance(params, list):
-            return [self.traverse_and_covert_to_jsonable(item) for item in params]
+            return [self.traverse_and_covert_to_jsonable(item) for item in params]  # type: ignore
 
     def parse_func_arguments(self, *args, **kwargs) -> Jsonable:  # noqa: ANN001, ANN002, ANN003
         """Parses the function arguments and converts them into a jsonable object.

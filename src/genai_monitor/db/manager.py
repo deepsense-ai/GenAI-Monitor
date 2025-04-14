@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 from typing import Any, Dict, Optional, Sequence, Type, Union
 
 from attrs import define
@@ -16,7 +17,7 @@ class DBManager:
     in the database using SQLAlchemy ORM models.
     """
 
-    session_manager: SessionManager = None
+    session_manager: Optional[SessionManager] = None
 
     def save(self, instance: BaseModel) -> BaseModel:
         """Saves an instance of a model to the database.
@@ -54,7 +55,7 @@ class DBManager:
 
     def update(
         self,
-        instance: BaseModel = None,
+        instance: Optional[BaseModel] = None,
         model: Optional[Type[BaseModel]] = None,
         filters: Optional[Dict[str, Any]] = None,
         values: Optional[Dict[str, Any]] = None,

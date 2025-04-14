@@ -49,7 +49,7 @@ class TransformersTextGenerationConditioningParser(BaseConditioningParser):
 
         serialized = {param: self._serialize_object(val) for param, val in parsed_arguments.items()}
 
-        return {k: v for k, v in serialized.items() if v is not None}
+        return {k: v for k, v in serialized.items() if v is not None}  # type: ignore
 
     @staticmethod
     def _serialize_object(obj: Any) -> Jsonable:
@@ -58,15 +58,15 @@ class TransformersTextGenerationConditioningParser(BaseConditioningParser):
         from transformers import LogitsProcessor, PreTrainedModel, StoppingCriteria
 
         if isinstance(obj, torch.Tensor):
-            return obj.tolist()
+            return obj.tolist()  # type: ignore
 
         if isinstance(obj, (PreTrainedModel, LogitsProcessor, StoppingCriteria)):
-            return obj.__class__.__name__
+            return obj.__class__.__name__  # type: ignore
 
         if is_jsonable(obj):
             return obj
 
         if isinstance(obj, Iterable):
-            return [TransformersTextGenerationConditioningParser._serialize_object(item) for item in obj]
+            return [TransformersTextGenerationConditioningParser._serialize_object(item) for item in obj]  # type: ignore
 
-        return None
+        return None  # type: ignore

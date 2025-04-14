@@ -51,7 +51,7 @@ if OPENAI_AVAILABLE:
                     continue
             raise TypeError(f"No supported pydantic schema for data {data} of type {type(data)}")
 
-        def model_output_to_base_type(self, model_output: T) -> BaseType:
+        def model_output_to_base_type(self, model_output: T) -> BaseType:  # type: ignore
             """Converts a model output to base supported type.
 
             Args:
@@ -64,8 +64,8 @@ if OPENAI_AVAILABLE:
                 TypeError: if model output is of type other than Completion/ChatCompletion.
             """
             if isinstance(model_output, Completion):
-                return model_output.choices[0].text
+                return model_output.choices[0].text  # type: ignore
             if isinstance(model_output, ChatCompletion):
-                return model_output.choices[0].message.content
+                return model_output.choices[0].message.content  # type: ignore
 
             raise TypeError(f"Unsupported model output type: {type(model_output).__name__}")

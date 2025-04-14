@@ -32,7 +32,7 @@ class StableDiffusionConditioningParser(BaseConditioningParser):
         """
         parsed_arguments = dict(kwargs)
         serialized = {param: self._serialize_object(val) for param, val in parsed_arguments.items()}
-        return {k: v for k, v in serialized.items() if v is not None}
+        return {k: v for k, v in serialized.items() if v is not None}  # type: ignore
 
     @staticmethod
     def _serialize_object(obj: Any) -> Jsonable:
@@ -42,11 +42,11 @@ class StableDiffusionConditioningParser(BaseConditioningParser):
         from PIL import Image
 
         if isinstance(obj, (torch.Tensor, np.ndarray)):
-            return obj.tolist()
+            return obj.tolist()  # type: ignore
 
         if isinstance(obj, torch.Generator):
             # sum(generator_state_tensor) is how we track seeds
-            return sum(obj.get_state().tolist())
+            return sum(obj.get_state().tolist())  # type: ignore
 
         if isinstance(obj, Image.Image):
             # Remove any leftover metadata
@@ -54,12 +54,11 @@ class StableDiffusionConditioningParser(BaseConditioningParser):
             buffer = io.BytesIO()
             # Save with reproducible settings
             obj.save(buffer, format="PNG", optimize=False, compress_level=0)
-            return hashlib.sha256(buffer.getvalue()).hexdigest()
-
+            return hashlib.sha256(buffer.getvalue()).hexdigest()  # type: ignore
         if is_jsonable(obj):
             return obj
 
         if isinstance(obj, Iterable) and not isinstance(obj, (str, bytes)):
-            return [StableDiffusionConditioningParser._serialize_object(item) for item in obj]
+            return [StableDiffusionConditioningParser._serialize_object(item) for item in obj]  # type: ignore
 
-        return None
+        return None  # type: ignore

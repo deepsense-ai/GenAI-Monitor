@@ -34,8 +34,8 @@ def register_class_collection(
     """
     for class_definition in definition_collection.data:
         module = importlib.import_module(class_definition.module_name)
-        cls = getattr(module, class_definition.cls_name)
-        methods_to_wrap = [getattr(cls, method_name) for method_name in class_definition.method_to_wrap]
+        cls = getattr(module, class_definition.cls_name)  # type: ignore
+        methods_to_wrap = [getattr(cls, method_name) for method_name in class_definition.method_to_wrap]  # type: ignore
         registry.register(
             func=methods_to_wrap[0],
             db_manager=db_manager,
@@ -71,7 +71,7 @@ def register_function_collection(
     """
     for definition in definition_collection.data:
         module = importlib.import_module(definition.module_name)
-        func = getattr(module, definition.function_name)
+        func = getattr(module, definition.function_name)  # type: ignore
         registry.register(
             func=func,
             db_manager=db_manager,

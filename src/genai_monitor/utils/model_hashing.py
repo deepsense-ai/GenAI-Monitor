@@ -28,7 +28,7 @@ if TRANSFORMERS_AVAILABLE:
         if not hasher:
             hasher = hashlib.sha256()
 
-        for module in transformers_model.modules():
+        for module in transformers_model.modules():  # type: ignore
             if isinstance(module, nn.Module):
                 get_pytorch_model_hash(module)
             else:
@@ -95,7 +95,7 @@ if DIFFUSERS_AVAILABLE:
                 traverse_and_hash_component(component=pipeline.components[component_name], hasher=hasher)
 
         else:
-            for module in pipeline.modules():
+            for module in pipeline.modules():  # type: ignore
                 traverse_and_hash_component(component=module, hasher=hasher)
 
     def traverse_and_hash_component(component: Any, hasher: hashlib._Hash):

@@ -128,7 +128,7 @@ def register_function(
             method_mapper={"parse_func_arguments": parse_inference_method_arguments},
         )()
 
-    conditioning_parser.max_unique_instances = max_unique_instances
+    conditioning_parser.max_unique_instances = max_unique_instances  # type: ignore
 
     if sample_fields_to_parsing_methods:
         conditioning_parser.sample_fields_to_parsing_methods = sample_fields_to_parsing_methods

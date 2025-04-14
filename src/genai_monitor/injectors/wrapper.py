@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 import inspect
 import json
 import textwrap
@@ -54,7 +55,7 @@ class Wrapper(ABC):
     conditioning_parser: BaseConditioningParser
     max_unique_instances: int
     hashing_function: Callable[[Any], str]
-    func: Optional[Callable] = field(init=False)
+    func: Callable = field(init=False)
 
     @abstractmethod
     def wrap(self, func: Callable) -> Callable:
@@ -590,7 +591,7 @@ class WrapperFactory:
         runtime_manager: RuntimeManager,
         output_parser: BaseModelOutputParser,
         conditioning_parser: BaseConditioningParser,
-        hashing_function: Callable[[object], str],
+        hashing_function: Callable[[Any], str],
         max_unique_instances: int = 1,
     ) -> Union[FunctionWrapper, MethodWrapper]:
         """Creates a wrapper for a function or method.

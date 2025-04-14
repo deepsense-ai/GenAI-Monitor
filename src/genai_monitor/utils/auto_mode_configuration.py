@@ -4,6 +4,7 @@ from typing import Dict
 
 from loguru import logger
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.orm import Session
 
 from genai_monitor.config import Config
 from genai_monitor.db import init_db
@@ -60,7 +61,7 @@ DEFAULT_SETTINGS = {
 }
 
 
-def _init_default_config(session: SessionManager, default_settings: dict) -> None:
+def _init_default_config(session: Session, default_settings: dict) -> None:
     """Initialize default configuration values in the database if they don't exist.
 
     Args:
@@ -89,7 +90,7 @@ def _init_default_config(session: SessionManager, default_settings: dict) -> Non
         session.rollback()
 
 
-def load_config(db_url: str, default_settings: Dict[str, dict[str, str]] = DEFAULT_SETTINGS) -> Dict[str, str]:
+def load_config(db_url: str, default_settings: Dict[str, dict[str, str]] = DEFAULT_SETTINGS) -> Config:
     """Load configuration from database.
 
     Args:
@@ -124,11 +125,11 @@ def load_config(db_url: str, default_settings: Dict[str, dict[str, str]] = DEFAU
                     settings_dict[entry.key] = entry.value
 
             return Config(
-                persistency={
+                persistency={  # type: ignore
                     "enabled": settings_dict["persistency.enabled"].lower() == "true",
                     "path": settings_dict["persistency.path"],
                 },
-                db={"url": settings_dict["db.url"]},
+                db={"url": settings_dict["db.url"]},  # type: ignore
                 version=settings_dict["version"],
             )
 

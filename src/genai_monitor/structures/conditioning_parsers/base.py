@@ -79,7 +79,7 @@ class BaseConditioningParser(ABC):
             if isinstance(jsonable_value, dict):
                 jsonable_value[CONDITIONING_METADATA_FIELDNAME] = conditioning_metadata
             else:
-                jsonable_value = {"content": jsonable_value, "metadata": conditioning_metadata}
+                jsonable_value = {"content": jsonable_value, "metadata": conditioning_metadata}  # type: ignore
 
         conditioning_hash = get_hash_from_jsonable(jsonable_value)
 
@@ -163,8 +163,8 @@ class BaseConditioningParser(ABC):
             self.db_manager.search(SampleTable, filters={"hash": hash_value})[0]
             for hash_value in sample_hashes.values()
         ]
-        samples = [Sample.from_orm(orm_instance=sample) for sample in sample_orms]
-        return samples
+        samples = [Sample.from_orm(orm_instance=sample) for sample in sample_orms]  # type: ignore
+        return samples  # type: ignore
 
     def _get_sample_hash_from_inference_params(self, **inference_params) -> Dict[str, str]:
         sample_hashes = {}
@@ -201,4 +201,4 @@ class DefaultConditioningParser(BaseConditioningParser):
             if not is_jsonable(val):
                 parsed_arguments[param] = str(val)
 
-        return {param: val for param, val in parsed_arguments.items() if is_jsonable(val)}
+        return {param: val for param, val in parsed_arguments.items() if is_jsonable(val)}  # type: ignore

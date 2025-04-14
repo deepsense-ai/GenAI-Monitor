@@ -44,7 +44,7 @@ if DIFFUSERS_AVAILABLE:
                 The model output reconstructed from the byte representation.
             """
             image = Image.open(io.BytesIO(databytes))
-            return StableDiffusionPipelineOutput(images=[image], nsfw_content_detected=[])
+            return StableDiffusionPipelineOutput(images=[image], nsfw_content_detected=[])  # type: ignore
 
         def _get_image_from_model_output(self, model_output: StableDiffusionOutputType) -> Image.Image:  # type: ignore
             """Extracts a single image from the model output.
@@ -73,11 +73,11 @@ if DIFFUSERS_AVAILABLE:
             return model_output[0][0]
 
         def _get_data_from_pipeline_output(self, model_output: StableDiffusionPipelineOutput) -> Image.Image:
-            self._contains_single_image(model_output.images)
+            self._contains_single_image(model_output.images)  # type: ignore
             return model_output.images[0]
 
         @staticmethod
-        def _contains_single_image(imgs: List[Image.Image]) -> None:
+        def _contains_single_image(imgs: List[Image.Image]) -> None:  # type: ignore
             """Ensures that the model output contains a single image.
 
             Args:

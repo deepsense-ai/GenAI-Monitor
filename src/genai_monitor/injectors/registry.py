@@ -43,7 +43,7 @@ class WrapperRegistry:
         runtime_manager: RuntimeManager,
         output_parser: BaseModelOutputParser,
         conditioning_parser: BaseConditioningParser,
-        hashing_function: Optional[Callable[[Any], str]] = None,
+        hashing_function: Callable[[Any], str],
         max_unique_instances: int = 1,
     ):
         """Register a function with the registry.

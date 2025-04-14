@@ -43,28 +43,28 @@ jobs:
       - name: Run ruff linter
         run: uv run ruff check --output-format=github
 
-      # - name: Run mypy
-      #   run: |
-      #     uv pip install mypy
-      #     uv run mypy .
+      - name: Run mypy
+        run: |
+          uv pip install mypy
+          uv run mypy .
 
-  #     - name: Run Trivy vulnerability scanner
-  #       uses: aquasecurity/trivy-action@master
-  #       env:
-  #         TRIVY_DB_REPOSITORY: ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2
-  #       with:
-  #         scan-type: "fs"
-  #         ignore-unfixed: true
-  #         exit-code: 0 # change if you want to fail build on vulnerabilities
-  #         severity: "CRITICAL,HIGH,MEDIUM"
-  #         skip-dirs: .venv,.ruff_cache,.mypy_cache
-  #         format: "table"
-  #         output: "trivy-scanning-results.txt"
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        env:
+          TRIVY_DB_REPOSITORY: ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2
+        with:
+          scan-type: "fs"
+          ignore-unfixed: true
+          exit-code: 0 # change if you want to fail build on vulnerabilities
+          severity: "CRITICAL,HIGH,MEDIUM"
+          skip-dirs: .venv,.ruff_cache,.mypy_cache
+          format: "table"
+          output: "trivy-scanning-results.txt"
 
-  #     - name: Format trivy message
-  #       run: |
-  #         echo "Trivy scanning results." >> trivy.txt
-  #         cat trivy-scanning-results.txt >> trivy.txt
+      - name: Format trivy message
+        run: |
+          echo "Trivy scanning results." >> trivy.txt
+          cat trivy-scanning-results.txt >> trivy.txt
 
   #     - name: Add trivy report to PR
   #       uses: thollander/actions-comment-pull-request@v2

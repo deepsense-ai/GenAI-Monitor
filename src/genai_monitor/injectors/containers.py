@@ -51,7 +51,7 @@ class DependencyContainer(containers.DeclarativeContainer):
         from genai_monitor.structures.output_parsers.transformers_text_generation import (
             TransformersTextGenerationParser,
         )
-        from genai_monitor.utils.model_hashing import get_transformers_model_hash
+        from genai_monitor.utils.model_hashing import get_transformers_model_hash  # type: ignore
 
         transformers_output_parser = providers.Factory(provides=TransformersTextGenerationParser)
         transformers_conditioning_parser = providers.Factory(TransformersTextGenerationConditioningParser)
@@ -80,7 +80,7 @@ class DependencyContainer(containers.DeclarativeContainer):
     if OPENAI_AVAILABLE:
         from genai_monitor.structures.conditioning_parsers.openai import OpenAIConditioningParser
         from genai_monitor.structures.output_parsers.openai import OpenAIChatOutputParser
-        from genai_monitor.utils.model_hashing import get_empty_model_hash
+        from genai_monitor.utils.model_hashing import get_empty_model_hash  # type: ignore
 
         openai_output_parser = providers.Factory(provides=OpenAIChatOutputParser)
         openai_conditioning_parser = providers.Factory(OpenAIConditioningParser)
@@ -109,7 +109,7 @@ class DependencyContainer(containers.DeclarativeContainer):
     if DIFFUSERS_AVAILABLE:
         from genai_monitor.structures.conditioning_parsers.stable_diffusion import StableDiffusionConditioningParser
         from genai_monitor.structures.output_parsers.stable_diffusion import StableDiffusionOutputParser
-        from genai_monitor.utils.model_hashing import get_diffusers_model_hash
+        from genai_monitor.utils.model_hashing import get_diffusers_model_hash  # type: ignore
 
         diffusers_output_parser = providers.Factory(provides=StableDiffusionOutputParser)
         diffusers_conditioning_parser = providers.Factory(StableDiffusionConditioningParser)
@@ -138,7 +138,7 @@ class DependencyContainer(containers.DeclarativeContainer):
     if LITELLM_AVAILABLE:
         from genai_monitor.structures.conditioning_parsers.litellm import LiteLLMCompletionConditioningParser
         from genai_monitor.structures.output_parsers.litellm import LiteLLMCompletionOutputParser
-        from genai_monitor.utils.model_hashing import get_function_full_path
+        from genai_monitor.utils.model_hashing import get_function_full_path  # type: ignore
 
         litellm_output_parser = providers.Factory(provides=LiteLLMCompletionOutputParser)
         litellm_conditioning_parser = providers.Factory(provides=LiteLLMCompletionConditioningParser)

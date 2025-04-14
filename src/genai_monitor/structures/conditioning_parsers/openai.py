@@ -39,4 +39,4 @@ class OpenAIConditioningParser(BaseConditioningParser):
             else:
                 parsed_arguments[key] = value
 
-        return parsed_arguments
+        return parsed_arguments  # type: ignore
