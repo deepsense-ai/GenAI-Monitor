@@ -8,9 +8,9 @@ from genai_monitor.structures.conditioning_parsers.base import BaseConditioningP
 class LiteLLMCompletionConditioningParser(BaseConditioningParser):
     """Conditioning parser for the Lite LLM completion calls."""
 
-    def __init__(self, sample_fields_to_parsing_methods=None):  # noqa: ANN204,D107,ANN001
+    def __init__(self):  # noqa: ANN204,D107,ANN001
         require_extra("litellm", EXTRAS_REQUIRE)
-        super().__init__(sample_fields_to_parsing_methods)
+        super().__init__()
 
     def traverse_and_covert_to_jsonable(self, params: Any) -> Jsonable:  # type: ignore
         """Recursively traverse the params and convert them to jsonable objects.

@@ -5,7 +5,7 @@ from loguru import logger
 from .config import SessionManager
 
 
-def init_db(database_url: str = "sqlite:///genai_eval.db") -> SessionManager:
+def init_db(database_url: str = "sqlite:///genai_monitor.db") -> SessionManager:
     """Initializes the database connection.
 
     Args:

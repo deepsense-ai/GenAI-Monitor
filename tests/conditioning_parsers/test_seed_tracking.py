@@ -40,7 +40,7 @@ def test_transformers_seed_tracking():
     generator.manual_seed(seed)
 
     # Parse conditioning with the generator
-    conditioning, _ = parser.parse_conditioning(
+    conditioning = parser.parse_conditioning(
         lambda generator: None,  # dummy function
         generator=generator,
     )
@@ -58,7 +58,7 @@ def test_openai_seed_tracking():
 
     # Parse conditioning with a seed parameter
     seed = 12345
-    conditioning, _ = parser.parse_conditioning(
+    conditioning = parser.parse_conditioning(
         lambda seed: None,  # dummy function
         seed=seed,
     )
@@ -80,7 +80,7 @@ def test_no_seed_tracking():
 
     for parser in parsers:
         # Parse conditioning without any seed parameters
-        conditioning, _ = parser.parse_conditioning(
+        conditioning = parser.parse_conditioning(
             lambda: None,  # dummy function
         )
 

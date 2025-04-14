@@ -9,9 +9,9 @@ class OpenAIConditioningParser(BaseConditioningParser):
     _excluded = ["extra_headers", "extra_query", "extra_body"]
     _tracked_seed_types = {SeedType.OPENAI}  # OpenAI API supports seed parameter
 
-    def __init__(self, sample_fields_to_parsing_methods=None):  # noqa: D107, ANN204
+    def __init__(self):  # noqa: D107, ANN204
         require_extra("openai", EXTRAS_REQUIRE)
-        super().__init__(sample_fields_to_parsing_methods)
+        super().__init__()
 
     def parse_func_arguments(self, *args, **kwargs) -> Jsonable:
         """Parsing function for OpenAI models.

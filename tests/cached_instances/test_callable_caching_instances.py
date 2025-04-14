@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-from conftest import dummy_callable_func
+from tests.conftest import dummy_callable_func
 
 from genai_monitor.registration.api import register_function
 from genai_monitor.utils.auto_mode_configuration import load_config

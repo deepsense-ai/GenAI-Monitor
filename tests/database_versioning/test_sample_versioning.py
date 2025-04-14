@@ -1,4 +1,4 @@
-from conftest import dummy_callable_func
+from tests.conftest import dummy_callable_func
 
 from genai_monitor.common.structures.data import Sample
 from genai_monitor.database_versioning import set_database_version, set_runtime_version

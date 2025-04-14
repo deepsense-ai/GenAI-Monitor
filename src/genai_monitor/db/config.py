@@ -9,11 +9,10 @@ from .schemas.tables import (  # noqa: F401
     ConditioningTable,
     ConditioningTypeTable,
     ModelTable,
-    SampleEvaluationMapping,
     SampleTable,
 )
 
-DEFAULT_DATABASE_URL = "sqlite:///genai_eval.db"
+DEFAULT_DATABASE_URL = "sqlite:///genai_monitor.db"
 
 
 class SessionManager:

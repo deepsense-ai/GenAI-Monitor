@@ -34,7 +34,6 @@ def register_class(
     model_output_to_base_type: Optional[Callable[[Any], BaseType]] = None,
     parse_inference_method_arguments: Optional[Callable[[Dict[str, Any]], Jsonable]] = None,
     model_hashing_function: Optional[Callable[[object], str]] = None,
-    sample_fields_to_parsing_methods: Optional[Dict[str, Callable]] = None,
     max_unique_instances: int = 1,
 ):
     """Registers a class with inference methods.
@@ -47,9 +46,6 @@ def register_class(
         model_output_to_base_type: The function to convert the model output to a base type.
         parse_inference_method_arguments: The function to parse the inference method arguments.
         model_hashing_function: The function to hash the model.
-        sample_fields_to_parsing_methods: Optional mapping between the names of parameters in the inference method
-        and functions that allow to extract the base type representation that can be looked up in the database using
-        a hash.
         max_unique_instances: The maximum number of unique sample instances for each conditioning.
     """
     cls_name = cls.__name__
@@ -62,9 +58,6 @@ def register_class(
             base=BaseConditioningParser,
             method_mapper={"parse_func_arguments": parse_inference_method_arguments},
         )()
-
-    if sample_fields_to_parsing_methods:
-        conditioning_parser.sample_fields_to_parsing_methods = sample_fields_to_parsing_methods
 
     output_parser_method_mapper = {
         "model_output_to_bytes": model_output_to_bytes,
@@ -100,7 +93,6 @@ def register_function(
     model_output_to_base_type: Optional[Callable[[Any], BaseType]] = None,
     parse_inference_method_arguments: Optional[Callable[[Dict[str, Any]], Jsonable]] = None,
     model_hashing_function: Optional[Callable[[object], str]] = None,
-    sample_fields_to_parsing_methods: Optional[Dict[str, Callable]] = None,
     max_unique_instances: int = 1,
 ):
     """Registers a function.
@@ -112,9 +104,6 @@ def register_function(
         model_output_to_base_type: The function to convert the model output to a base type.
         parse_inference_method_arguments: The function to parse the inference method arguments.
         model_hashing_function: The function to hash the model.
-        sample_fields_to_parsing_methods: Optional mapping between the names of parameters in the inference method
-        and functions that allow to extract the base type representation that can be looked up in the database using
-        a hash.
         max_unique_instances: The maximum number of unique sample instances for each conditioning.
     """
     func_name = f"{func.__module__}.{func.__name__}"
@@ -129,9 +118,6 @@ def register_function(
         )()
 
     conditioning_parser.max_unique_instances = max_unique_instances  # type: ignore
-
-    if sample_fields_to_parsing_methods:
-        conditioning_parser.sample_fields_to_parsing_methods = sample_fields_to_parsing_methods
 
     output_parser_method_mapper = {
         "model_output_to_bytes": model_output_to_bytes,

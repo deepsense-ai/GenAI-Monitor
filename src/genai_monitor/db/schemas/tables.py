@@ -61,16 +61,6 @@ class ModelTable(BaseModel):
     model_metadata: Mapped[Optional[dict]] = mapped_column(JSON)
 
 
-class SampleEvaluationMapping(BaseModel):
-    """Database table representing association between an evaluated sample and its evaluation result."""
-
-    __tablename__ = "sample_evaluation_mapping"
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    evaluated_sample_id: Mapped[Optional[int]] = mapped_column(ForeignKey("sample.id"))
-    evaluation_result_sample_id: Mapped[Optional[int]] = mapped_column(ForeignKey("sample.id"))
-    evaluator_id: Mapped[Optional[int]] = mapped_column(ForeignKey("model.id"))
-
-
 class ConfigurationTable(BaseModel):
     """Database table representing system configuration.
 

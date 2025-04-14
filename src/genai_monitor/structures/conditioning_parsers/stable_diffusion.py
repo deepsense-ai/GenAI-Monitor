@@ -1,6 +1,6 @@
 import hashlib
 import io
-from typing import Any, Iterable, Mapping, Optional
+from typing import Any, Iterable
 
 from genai_monitor.dependencies import EXTRAS_REQUIRE, require_extra
 from genai_monitor.structures.conditioning_parsers.base import BaseConditioningParser, Jsonable, is_jsonable
@@ -16,9 +16,9 @@ class StableDiffusionConditioningParser(BaseConditioningParser):
 
     _tracked_seed_types = {SeedType.TORCH, SeedType.DIFFUSERS}
 
-    def __init__(self, sample_fields_to_parsing_methods: Optional[Mapping[str, Any]] = None):  # noqa: D107, ANN204
+    def __init__(self):  # noqa: D107, ANN204
         require_extra("diffusers", EXTRAS_REQUIRE)
-        super().__init__(sample_fields_to_parsing_methods)
+        super().__init__()
 
     def parse_func_arguments(self, *args, **kwargs) -> Jsonable:
         """Parses the function arguments and converts them into a jsonable object.

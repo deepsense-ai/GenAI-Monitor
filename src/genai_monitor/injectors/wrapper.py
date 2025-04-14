@@ -20,7 +20,6 @@ from genai_monitor.db.schemas.tables import (
     ConditioningTable,
     ConfigurationTable,
     ModelTable,
-    SampleEvaluationMapping,
     SampleTable,
 )
 from genai_monitor.static.constants import EMPTY_MODEL_HASH, UNKNOWN_MODEL_HASH
@@ -74,7 +73,6 @@ class Wrapper(ABC):
         conditioning: Conditioning,
         generator: Model,
         generation_id: Optional[Union[int, None]] = None,
-        samples_in_conditioning: Optional[List[Sample]] = None,
     ):
         """Saves the sample to the database.
 
@@ -83,7 +81,6 @@ class Wrapper(ABC):
             conditioning: The conditioning.
             generator: The generator.
             generation_id: The generation id (from 0 to `max_unique_instances` - 1).
-            samples_in_conditioning: The samples in conditioning.
         """
         sample = self.output_parser.get_sample_from_model_output(model_output=model_output)
         sample.model_id = generator.id
@@ -101,21 +98,10 @@ class Wrapper(ABC):
         if generation_id is not None:
             sample.generation_id = generation_id
 
-        # TODO: check whether data is uploaded to the database
         sample = Sample.from_orm(self.db_manager.save(sample.to_orm()))
         self.runtime_manager.latest_sample = sample
         self.persistency_manager.save_sample(sample)
         logger.info(f"Saved sample #{sample.id} to database.")
-
-        # TODO: Remove this functionality
-        if samples_in_conditioning:
-            self.db_manager.save(
-                instance=SampleEvaluationMapping(
-                    evaluated_sample_id=samples_in_conditioning[0].id,
-                    evaluation_result_sample_id=sample.id,
-                    evaluator_id=generator.id if generator else None,
-                )
-            )
         self.attach_artifacts_to_sample(sample)
 
     def _finish_sample_generation(
@@ -125,7 +111,6 @@ class Wrapper(ABC):
         conditioning: Conditioning,
         generator: Model,
         generation_id: Optional[int] = None,
-        samples_in_conditioning: Optional[List[Sample]] = None,
     ):
         """Updates sample placeholder with the model output and saves it to the database.
 
@@ -135,7 +120,6 @@ class Wrapper(ABC):
             conditioning: The conditioning.
             generator: The generator.
             generation_id: The generation id (from 0 to `max_unique_instances` - 1).
-            samples_in_conditioning: The samples in conditioning.
         """
         updates = {
             "hash": self.output_parser.get_model_output_hash(model_output),
@@ -165,16 +149,6 @@ class Wrapper(ABC):
         sample.data = self.output_parser.model_output_to_bytes(model_output)
         self.persistency_manager.save_sample(sample)
         logger.info(f"Saved sample #{sample.id} to database.")
-
-        if samples_in_conditioning:
-            # TODO: only a single evaluated sample is supported for now
-            self.db_manager.save(
-                instance=SampleEvaluationMapping(
-                    evaluated_sample_id=samples_in_conditioning[0].id,
-                    evaluation_result_sample_id=sample.id,
-                    evaluator_id=generator.id if generator else None,
-                )
-            )
         self.attach_artifacts_to_sample(sample)
 
     def _get_generations(self, hash_value: str, conditioning: Conditioning, name: str) -> Tuple[Model, List[Sample]]:
@@ -250,7 +224,6 @@ class Wrapper(ABC):
     def _return_existing_generation(
         self,
         existing_generations: List[Sample],
-        samples_in_conditioning: List[Sample],
         generation_id: Optional[int] = None,
         generator: Model = None,
     ) -> Any:
@@ -258,7 +231,6 @@ class Wrapper(ABC):
 
         Args:
             existing_generations: The existing generations.
-            samples_in_conditioning: The samples in conditioning.
             hash_value: The hash of the model/function.
             generation_id: The generation id.
             generator: The generator.
@@ -284,15 +256,6 @@ class Wrapper(ABC):
             logger.info(f"Generation {sample.id} is not complete. Waiting for completion...")
             time.sleep(1)
             sample = self.db_manager.search(SampleTable, {"id": sample.id})[0]
-
-        if samples_in_conditioning:
-            self.db_manager.save(
-                instance=SampleEvaluationMapping(
-                    evaluated_sample_id=samples_in_conditioning[0].id,
-                    evaluation_result_sample_id=sample.id,
-                    evaluator_id=generator.id if generator else None,
-                )
-            )
 
         try:
             self.runtime_manager.latest_sample = sample
@@ -429,7 +392,7 @@ class FunctionWrapper(Wrapper):
             function_hash = self.hashing_function(func)
             function_name = func.__name__
 
-            conditioning, samples_in_conditioning = self.conditioning_parser.parse_conditioning(func, *args, **kwargs)
+            conditioning = self.conditioning_parser.parse_conditioning(func, *args, **kwargs)
             kwargs.pop(CONDITIONING_METADATA_FIELDNAME, None)
 
             conditioning = self._resolve_conditioning(conditioning)
@@ -449,7 +412,6 @@ class FunctionWrapper(Wrapper):
                         model_output=model_output,
                         conditioning=conditioning,
                         generator=generator,
-                        samples_in_conditioning=samples_in_conditioning,
                     )
 
                 return model_output
@@ -459,7 +421,6 @@ class FunctionWrapper(Wrapper):
                 try:
                     model_output = self._return_existing_generation(
                         existing_generations=existing_generations,
-                        samples_in_conditioning=samples_in_conditioning,
                         generator=generator,
                         generation_id=next_instance,
                     )
@@ -494,7 +455,6 @@ class FunctionWrapper(Wrapper):
                 model_output=model_output,
                 conditioning=conditioning,
                 generator=generator,
-                samples_in_conditioning=samples_in_conditioning,
                 generation_id=next_instance,
             )
             self.update_generation_id(conditioning, next_instance)
@@ -514,7 +474,7 @@ class MethodWrapper(Wrapper):
         def wrapped(obj_self, *args, **kwargs) -> Any:
             model_hash = self.hashing_function(obj_self)
             model_cls_name = obj_self.__class__.__name__
-            conditioning, samples_in_conditioning = self.conditioning_parser.parse_conditioning(func, *args, **kwargs)
+            conditioning = self.conditioning_parser.parse_conditioning(func, *args, **kwargs)
             kwargs.pop(CONDITIONING_METADATA_FIELDNAME, None)
 
             conditioning = self._resolve_conditioning(conditioning)
@@ -534,7 +494,6 @@ class MethodWrapper(Wrapper):
                         model_output=model_output,
                         conditioning=conditioning,
                         generator=generator,
-                        samples_in_conditioning=samples_in_conditioning,
                     )
 
                 return model_output
@@ -544,7 +503,6 @@ class MethodWrapper(Wrapper):
 
                 model_output = self._return_existing_generation(
                     existing_generations=existing_generations,
-                    samples_in_conditioning=samples_in_conditioning,
                     generator=generator,
                     generation_id=next_instance,
                 )
@@ -571,7 +529,6 @@ class MethodWrapper(Wrapper):
                 model_output=model_output,
                 conditioning=conditioning,
                 generator=generator,
-                samples_in_conditioning=samples_in_conditioning,
                 generation_id=next_instance,
             )
             self.update_generation_id(conditioning, next_instance)
