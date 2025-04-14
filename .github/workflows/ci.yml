@@ -110,14 +110,15 @@ jobs:
       - name: Install package and dependencies
         run: |
           uv venv
+          uv sync
           uv pip install .
 
       - name: Run Tests With Coverage
         run: |
           # run with coverage to not execute tests twice
-          uv run --dev coverage run -m pytest -v -p no:warnings --junitxml=report.xml
-          uv run --dev coverage report
-          uv run --dev coverage xml
+          uv run coverage run -m pytest -v -p no:warnings --junitxml=report.xml
+          uv run coverage report
+          uv run coverage xml
 
       - name: Test Report
         uses: mikepenz/action-junit-report@v4
