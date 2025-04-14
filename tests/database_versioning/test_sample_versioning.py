@@ -1,10 +1,9 @@
-from tests.conftest import dummy_callable_func
-
 from genai_monitor.common.structures.data import Sample
 from genai_monitor.database_versioning import set_database_version, set_runtime_version
 from genai_monitor.db.schemas.tables import SampleTable
 from genai_monitor.registration.api import register_function
 from genai_monitor.utils.auto_mode_configuration import load_config
+from tests.conftest import dummy_callable_func
 
 
 def test_sample_versioning(container, tmp_settings, get_registration_params_for_callable):

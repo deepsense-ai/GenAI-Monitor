@@ -1,9 +1,8 @@
 from copy import deepcopy
 
-from tests.conftest import dummy_callable_func
-
 from genai_monitor.registration.api import register_function
 from genai_monitor.utils.auto_mode_configuration import load_config
+from tests.conftest import dummy_callable_func
 
 
 def test_caching_instances_for_callable(container, tmp_settings, get_registration_params_for_callable_cached_instances):
