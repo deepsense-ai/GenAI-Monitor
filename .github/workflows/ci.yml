@@ -115,10 +115,9 @@ jobs:
       - name: Run Tests With Coverage
         run: |
           # run with coverage to not execute tests twice
-          uv tool install coverage[toml]
-          uv run coverage run -m pytest -v -p no:warnings --junitxml=report.xml
-          uv run coverage report
-          uv run coverage xml
+          uv run --dev coverage run -m pytest -v -p no:warnings --junitxml=report.xml
+          uv run --dev coverage report
+          uv run --dev coverage xml
 
       - name: Test Report
         uses: mikepenz/action-junit-report@v4
