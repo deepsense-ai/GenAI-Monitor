@@ -18,7 +18,7 @@ def test_stable_diffusion_seed_tracking():
     generator.manual_seed(seed)
 
     # Parse conditioning with the generator
-    conditioning, _ = parser.parse_conditioning(
+    conditioning = parser.parse_conditioning(
         lambda generator: None,  # dummy function
         generator=generator,
     )
