@@ -32,8 +32,8 @@ litellm = [
     "litellm>=1.60.2",
 ]
 
-[dependency-groups]
-dev = [
+[tool.uv]
+dev-dependencies = [
     # Development tools
     "mkdocs-autorefs>=1.4.1",
     "mkdocs-click>=0.9.0",
