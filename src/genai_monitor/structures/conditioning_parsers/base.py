@@ -1,10 +1,10 @@
 import inspect
 from abc import ABC, abstractmethod
 from copy import deepcopy
-from typing import Any, Callable, Dict, List, Optional, OrderedDict, Set, Tuple
+from typing import Any, Callable, Dict, Optional, OrderedDict, Set
 
 from genai_monitor.common.errors import NotJsonableError
-from genai_monitor.common.structures.data import Conditioning, Sample
+from genai_monitor.common.structures.data import Conditioning
 from genai_monitor.common.utils import is_jsonable
 from genai_monitor.db.manager import DBManager
 from genai_monitor.dependencies import DIFFUSERS_AVAILABLE, OPENAI_AVAILABLE, TRANSFORMERS_AVAILABLE
@@ -27,7 +27,7 @@ class BaseConditioningParser(ABC):
     db_manager: DBManager
     persistency_manager: PersistencyManager
 
-    def parse_conditioning(self, method: Callable, *args, **kwargs) -> Tuple[Conditioning, List[Sample]]:
+    def parse_conditioning(self, method: Callable, *args, **kwargs) -> Conditioning:
         """Parse the execution parameters of a function into a Conditioning object.
 
         Inspects the signature of the function and passed arguments/keyword arguments.
