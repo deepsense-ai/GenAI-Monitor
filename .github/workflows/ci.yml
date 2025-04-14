@@ -110,7 +110,7 @@ jobs:
       - name: Install package and dependencies
         run: |
           uv venv
-          uv sync
+          uv sync --dev
           uv pip install .
 
       - name: Run Tests With Coverage
