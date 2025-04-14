@@ -8,7 +8,6 @@ from sqlalchemy.orm import Session
 
 from genai_monitor.config import Config
 from genai_monitor.db import init_db
-from genai_monitor.db.config import SessionManager
 from genai_monitor.db.schemas.tables import ConfigurationTable
 from genai_monitor.static.constants import DEFAULT_DB_VERSION, DEFAULT_PERSISTENCY_PATH
 
