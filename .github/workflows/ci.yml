@@ -115,6 +115,7 @@ jobs:
       - name: Run Tests With Coverage
         run: |
           # run with coverage to not execute tests twice
+          uv tool install coverage
           uv run coverage run -m pytest -v -p no:warnings --junitxml=report.xml
           uv run coverage report
           uv run coverage xml
