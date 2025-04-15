@@ -11,20 +11,17 @@
 
 <div align="center">
 
-<a href="https://pypi.org/project/ragbits" target="_blank">
-  <img alt="PyPI - License" src="https://img.shields.io/pypi/l/ragbits">
+<a href="https://pypi.org/project/genai-monitor" target="_blank">
+  <img alt="PyPI - License" src="https://img.shields.io/pypi/l/genai-monitor">
 </a>
 
-<a href="https://pypi.org/project/ragbits" target="_blank">
-  <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/ragbits">
+<a href="https://pypi.org/project/genai-monitor" target="_blank">
+  <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/genai-monitor">
 </a>
 
-<a href="https://pypi.org/project/ragbits" target="_blank">
-  <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/ragbits">
+<a href="https://pypi.org/project/genai-monitor" target="_blank">
+  <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/genai-monitor">
 </a>
-
-</div>
-TODO: change above to genai-monitor
 
 ## Overview
 
@@ -107,36 +104,11 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 # The application code remains unchanged, but you save time and API costs
 ```
-## TODO
-
--- Query
-
-## Documentation
-
-Comprehensive documentation is available at
-
-index.md
-
-.
-
-For API reference, see
-
-api_reference
-
-.
 
 ## Contributing
 
-Contributions are welcome! Please see
-
-CONTRIBUTING.md
-
- for details on how to contribute to this project.
+Contributions are welcome! Please see [CONTRIBUTING.md](https://github.com/deepsense-ai/GenAI-Monitor/blob/main/CONTRIBUTING.md) for details on how to contribute to this project.
 
 ## License
 
-This project is licensed under the MIT License - see the
-
-LICENSE.md
-
- file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/deepsense-ai/GenAI-Monitor/blob/main/LICENSE) file for details.

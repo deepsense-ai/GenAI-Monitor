@@ -10,25 +10,21 @@
 </div>
 
 
-
-
-
 <div align="center">
 
-<a href="https://pypi.org/project/ragbits" target="_blank">
-  <img alt="PyPI - License" src="https://img.shields.io/pypi/l/ragbits">
+<a href="https://pypi.org/project/genai-monitor" target="_blank">
+  <img alt="PyPI - License" src="https://img.shields.io/pypi/l/genai-monitor">
 </a>
 
-<a href="https://pypi.org/project/ragbits" target="_blank">
-  <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/ragbits">
+<a href="https://pypi.org/project/genai-monitor" target="_blank">
+  <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/genai-monitor">
 </a>
 
-<a href="https://pypi.org/project/ragbits" target="_blank">
-  <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/ragbits">
+<a href="https://pypi.org/project/genai-monitor" target="_blank">
+  <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/genai-monitor">
 </a>
 
 </div>
-TODO: change above to genai-monitor
 
 ## Overview
 
@@ -126,11 +122,3 @@ GenAI Monitor is under active development. Here are some of the exciting feature
 * [Quickstart](./quickstart/auto_mode.md)
 * [How-to guides](./index.md)
 * [API reference](./api_reference/index.md)
-
-## Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](../CONTRIBUTING.md) (todo: add link) for details on how to contribute to this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](../LICENSE.md) (#TODO: add link + check license) file for details.
