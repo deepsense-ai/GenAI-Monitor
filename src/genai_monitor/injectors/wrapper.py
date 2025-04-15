@@ -522,7 +522,7 @@ class MethodWrapper(Wrapper):
                 self.db_manager.update(
                     model=SampleTable,
                     filters={"id": sample_placeholder.id},
-                    values={"status": SampleStatus.FAILED.value}
+                    values={"status": SampleStatus.FAILED.value},
                 )
                 logger.error(f"Could not generate sample: {e}")
                 raise e

@@ -1,19 +1,35 @@
-### Conventions
-1. Use the commit message format consistent with the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) standard
-2. Use typing but omit mypy for static type checking due to the "hacky" nature of some of the things in hidden mode
-3. Use typing structures for python <3.10 to avoid compatibility issues. Use:
-   ```
-   from typing import List
-   def foo(ints: List[int]):
-       pass
-   ```
-   Instead of:
-   ```
-   def foo(ints: list[int]):
-       pass
-   ```
-4. Use Google-type docstrings, omit type annotations for parameters if provided in function/method signature
-5. Use pre-commit configured in this repo, feel free to propose changes to the configuration if it feels too restrictive
-6. Add tests to PRs when possible
-7. When in doubt about anything python, consult [this](https://google.github.io/styleguide/pyguide.html) style guide, there's probably a reasonable approach there
-8. Rebase your feature onto main before merging, if there are many atomic commits consider squashing upon merge
+# Installation
+
+## Build from source
+
+Dependencies needed to build and run Ragbits from the source code:
+
+1. [**uv**](https://docs.astral.sh/uv/getting-started/installation/)
+2. [**python**](https://docs.astral.sh/uv/guides/install-python/) 3.10
+
+
+## Linting and formatting
+We use `ruff` for linting and formatting our code. To format your code, run:
+
+```bash
+$ uv run ruff format
+```
+
+To lint the code, run:
+```bash
+$ uv run ruff check --fix
+```
+
+## Type checking
+We use `mypy` for type checking. To perform type checking, simply run:
+
+```bash
+$ uv run mypy .
+```
+
+## Testing
+We use `pytest` for testing. To run the tests, simply run:
+
+```bash
+$ uv run pytest
+```
