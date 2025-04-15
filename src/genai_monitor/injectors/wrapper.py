@@ -520,9 +520,12 @@ class MethodWrapper(Wrapper):
 
             except Exception as e:
                 self.db_manager.update(
-                    SampleTable, {"id": sample_placeholder.id}, {"status": SampleStatus.FAILED.value}
+                    model=SampleTable,
+                    filters={"id": sample_placeholder.id},
+                    values={"status": SampleStatus.FAILED.value}
                 )
                 logger.error(f"Could not generate sample: {e}")
+                raise e
 
             self._finish_sample_generation(
                 sample=sample_placeholder,
