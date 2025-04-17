@@ -1,7 +1,9 @@
 site_name: GenAI Monitor Docs
 site_description: Observability for Generative AI
+repo_name: deepsense-ai/GenAI-Monitor
+repo_url: https://github.com/deepsense-ai/GenAI-Monitor
 nav:
-  - GenAI Monitor: index/index.md
+  - GenAI Monitor: index.md
   - Getting Started: quickstart/auto_mode.md
   - How To:
     - "Setup a project": how_to/db_setup.md
@@ -95,3 +97,18 @@ markdown_extensions:
   - toc:
       permalink: "#"
   - mkdocs-click
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/deepsense-ai
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/deepsense_ai
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/company/deepsense-ai
+    - icon: fontawesome/brands/youtube
+      link: https://youtube.com/@deepsenseai
+    - icon: fontawesome/brands/medium
+      link: https://medium.com/deepsense-ai
+    - icon: fontawesome/solid/globe
+      link: https://deepsense.ai

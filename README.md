@@ -23,6 +23,8 @@
   <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/genai-monitor">
 </a>
 
+</div>
+
 ## Overview
 
 GenAI Monitor provides robust observability tools for Generative AI applications with zero additional effort. Simply import the library, and it automatically monitors, tracks, and analyzes your AI model's inputs, outputs, and performance in production environments - no code changes required to your existing AI workflows.
