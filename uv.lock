@@ -544,6 +544,7 @@ dependencies = [
     { name = "dependency-injector" },
     { name = "loguru" },
     { name = "pydantic-settings" },
+    { name = "setuptools" },
     { name = "sqlalchemy" },
     { name = "sqlalchemy-mixins" },
 ]
@@ -596,6 +597,7 @@ requires-dist = [
     { name = "openai", marker = "extra == 'openai'", specifier = ">=1.55.0" },
     { name = "pydantic-settings", specifier = ">=2.6.1" },
     { name = "sentencepiece", marker = "extra == 'diffusers'", specifier = ">=0.1.96" },
+    { name = "setuptools", specifier = ">=61.0" },
     { name = "sqlalchemy", specifier = ">=2.0.35" },
     { name = "sqlalchemy-mixins", specifier = ">=2.0.5" },
     { name = "torch", marker = "extra == 'diffusers'", specifier = ">=1.10.0" },
