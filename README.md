@@ -107,6 +107,11 @@ print(response.choices[0].message.content)
 # The application code remains unchanged, but you save time and API costs
 ```
 
+## Documentation
+
+Full documentation for GenAI Monitor is available [here](https://deepsense-ai.github.io/GenAI-Monitor/).
+
+
 ## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](https://github.com/deepsense-ai/GenAI-Monitor/blob/main/CONTRIBUTING.md) for details on how to contribute to this project.

@@ -2,7 +2,7 @@
 
 ## Build from source
 
-Dependencies needed to build and run Ragbits from the source code:
+Dependencies needed to build from the source code:
 
 1. [**uv**](https://docs.astral.sh/uv/getting-started/installation/)
 2. [**python**](https://docs.astral.sh/uv/guides/install-python/) 3.10
