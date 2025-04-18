@@ -1,0 +1,935 @@
+{
+    "data": [
+        {
+            "cls_name": "AltDiffusionImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.deprecated.alt_diffusion.pipeline_alt_diffusion_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "AltDiffusionPipeline",
+            "module_name": "diffusers.pipelines.deprecated.alt_diffusion.pipeline_alt_diffusion",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "AmusedImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.amused.pipeline_amused_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "AmusedInpaintPipeline",
+            "module_name": "diffusers.pipelines.amused.pipeline_amused_inpaint",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "AmusedPipeline",
+            "module_name": "diffusers.pipelines.amused.pipeline_amused",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "AudioLDM2Pipeline",
+            "module_name": "diffusers.pipelines.audioldm2.pipeline_audioldm2",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "AuraFlowPipeline",
+            "module_name": "diffusers.pipelines.aura_flow.pipeline_aura_flow",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "BlipDiffusionControlNetPipeline",
+            "module_name": "diffusers.pipelines.controlnet.pipeline_controlnet_blip_diffusion",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "BlipDiffusionPipeline",
+            "module_name": "diffusers.pipelines.blip_diffusion.pipeline_blip_diffusion",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "CogView3PlusPipeline",
+            "module_name": "diffusers.pipelines.cogview3.pipeline_cogview3plus",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "ConsistencyModelPipeline",
+            "module_name": "diffusers.pipelines.consistency_models.pipeline_consistency_models",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "CycleDiffusionPipeline",
+            "module_name": "diffusers.pipelines.deprecated.stable_diffusion_variants.pipeline_cycle_diffusion",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "DDIMPipeline",
+            "module_name": "diffusers.pipelines.ddim.pipeline_ddim",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "DDPMPipeline",
+            "module_name": "diffusers.pipelines.ddpm.pipeline_ddpm",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "DiTPipeline",
+            "module_name": "diffusers.pipelines.dit.pipeline_dit",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "FluxControlNetImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.flux.pipeline_flux_controlnet_image_to_image",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "FluxControlNetInpaintPipeline",
+            "module_name": "diffusers.pipelines.flux.pipeline_flux_controlnet_inpainting",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "FluxControlNetPipeline",
+            "module_name": "diffusers.pipelines.flux.pipeline_flux_controlnet",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "FluxImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.flux.pipeline_flux_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "FluxInpaintPipeline",
+            "module_name": "diffusers.pipelines.flux.pipeline_flux_inpaint",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "FluxPipeline",
+            "module_name": "diffusers.pipelines.flux.pipeline_flux",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "HunyuanDiTControlNetPipeline",
+            "module_name": "diffusers.pipelines.controlnet_hunyuandit.pipeline_hunyuandit_controlnet",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "HunyuanDiTPAGPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_hunyuandit",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "HunyuanDiTPipeline",
+            "module_name": "diffusers.pipelines.hunyuandit.pipeline_hunyuandit",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "IFImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.deepfloyd_if.pipeline_if_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "IFImg2ImgSuperResolutionPipeline",
+            "module_name": "diffusers.pipelines.deepfloyd_if.pipeline_if_img2img_superresolution",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "IFInpaintingPipeline",
+            "module_name": "diffusers.pipelines.deepfloyd_if.pipeline_if_inpainting",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "IFInpaintingSuperResolutionPipeline",
+            "module_name": "diffusers.pipelines.deepfloyd_if.pipeline_if_inpainting_superresolution",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "IFPipeline",
+            "module_name": "diffusers.pipelines.deepfloyd_if.pipeline_if",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "IFSuperResolutionPipeline",
+            "module_name": "diffusers.pipelines.deepfloyd_if.pipeline_if_superresolution",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "Kandinsky3Img2ImgPipeline",
+            "module_name": "diffusers.pipelines.kandinsky3.pipeline_kandinsky3_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "Kandinsky3Pipeline",
+            "module_name": "diffusers.pipelines.kandinsky3.pipeline_kandinsky3",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyCombinedPipeline",
+            "module_name": "diffusers.pipelines.kandinsky.pipeline_kandinsky_combined",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyImg2ImgCombinedPipeline",
+            "module_name": "diffusers.pipelines.kandinsky.pipeline_kandinsky_combined",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.kandinsky.pipeline_kandinsky_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyInpaintCombinedPipeline",
+            "module_name": "diffusers.pipelines.kandinsky.pipeline_kandinsky_combined",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyInpaintPipeline",
+            "module_name": "diffusers.pipelines.kandinsky.pipeline_kandinsky_inpaint",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyPipeline",
+            "module_name": "diffusers.pipelines.kandinsky.pipeline_kandinsky",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyV22CombinedPipeline",
+            "module_name": "diffusers.pipelines.kandinsky2_2.pipeline_kandinsky2_2_combined",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyV22ControlnetImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.kandinsky2_2.pipeline_kandinsky2_2_controlnet_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyV22ControlnetPipeline",
+            "module_name": "diffusers.pipelines.kandinsky2_2.pipeline_kandinsky2_2_controlnet",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyV22Img2ImgCombinedPipeline",
+            "module_name": "diffusers.pipelines.kandinsky2_2.pipeline_kandinsky2_2_combined",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyV22Img2ImgPipeline",
+            "module_name": "diffusers.pipelines.kandinsky2_2.pipeline_kandinsky2_2_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyV22InpaintCombinedPipeline",
+            "module_name": "diffusers.pipelines.kandinsky2_2.pipeline_kandinsky2_2_combined",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyV22InpaintPipeline",
+            "module_name": "diffusers.pipelines.kandinsky2_2.pipeline_kandinsky2_2_inpainting",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KandinskyV22Pipeline",
+            "module_name": "diffusers.pipelines.kandinsky2_2.pipeline_kandinsky2_2",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KarrasVePipeline",
+            "module_name": "diffusers.pipelines.deprecated.stochastic_karras_ve.pipeline_stochastic_karras_ve",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KolorsImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.kolors.pipeline_kolors_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KolorsPAGPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_kolors",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "KolorsPipeline",
+            "module_name": "diffusers.pipelines.kolors.pipeline_kolors",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "LDMPipeline",
+            "module_name": "diffusers.pipelines.deprecated.latent_diffusion_uncond.pipeline_latent_diffusion_uncond",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "LDMSuperResolutionPipeline",
+            "module_name": "diffusers.pipelines.latent_diffusion.pipeline_latent_diffusion_superresolution",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "LDMTextToImagePipeline",
+            "module_name": "diffusers.pipelines.latent_diffusion.pipeline_latent_diffusion",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "LEditsPPPipelineStableDiffusion",
+            "module_name": "diffusers.pipelines.ledits_pp.pipeline_leditspp_stable_diffusion",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "LEditsPPPipelineStableDiffusionXL",
+            "module_name": "diffusers.pipelines.ledits_pp.pipeline_leditspp_stable_diffusion_xl",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "LatentConsistencyModelImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.latent_consistency_models.pipeline_latent_consistency_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "LatentConsistencyModelPipeline",
+            "module_name": "diffusers.pipelines.latent_consistency_models.pipeline_latent_consistency_text2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "LuminaText2ImgPipeline",
+            "module_name": "diffusers.pipelines.lumina.pipeline_lumina",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "PNDMPipeline",
+            "module_name": "diffusers.pipelines.deprecated.pndm.pipeline_pndm",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "PaintByExamplePipeline",
+            "module_name": "diffusers.pipelines.paint_by_example.pipeline_paint_by_example",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "PixArtAlphaPipeline",
+            "module_name": "diffusers.pipelines.pixart_alpha.pipeline_pixart_alpha",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "PixArtSigmaPAGPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_pixart_sigma",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "PixArtSigmaPipeline",
+            "module_name": "diffusers.pipelines.pixart_alpha.pipeline_pixart_sigma",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "RePaintPipeline",
+            "module_name": "diffusers.pipelines.deprecated.repaint.pipeline_repaint",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "ScoreSdeVePipeline",
+            "module_name": "diffusers.pipelines.deprecated.score_sde_ve.pipeline_score_sde_ve",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "SemanticStableDiffusionPipeline",
+            "module_name": "diffusers.pipelines.semantic_stable_diffusion.pipeline_semantic_stable_diffusion",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "ShapEImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.shap_e.pipeline_shap_e_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "ShapEPipeline",
+            "module_name": "diffusers.pipelines.shap_e.pipeline_shap_e",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableAudioPipeline",
+            "module_name": "diffusers.pipelines.stable_audio.pipeline_stable_audio",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableCascadeCombinedPipeline",
+            "module_name": "diffusers.pipelines.stable_cascade.pipeline_stable_cascade_combined",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableCascadeDecoderPipeline",
+            "module_name": "diffusers.pipelines.stable_cascade.pipeline_stable_cascade",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusion3ControlNetInpaintingPipeline",
+            "module_name": "diffusers.pipelines.controlnet_sd3.pipeline_stable_diffusion_3_controlnet_inpainting",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusion3ControlNetPipeline",
+            "module_name": "diffusers.pipelines.controlnet_sd3.pipeline_stable_diffusion_3_controlnet",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusion3Img2ImgPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_3.pipeline_stable_diffusion_3_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusion3InpaintPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_3.pipeline_stable_diffusion_3_inpaint",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusion3PAGPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_sd_3",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusion3Pipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_3.pipeline_stable_diffusion_3",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionAdapterPipeline",
+            "module_name": "diffusers.pipelines.t2i_adapter.pipeline_stable_diffusion_adapter",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionAttendAndExcitePipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_attend_and_excite.pipeline_stable_diffusion_attend_and_excite",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionControlNetImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.controlnet.pipeline_controlnet_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionControlNetInpaintPipeline",
+            "module_name": "diffusers.pipelines.controlnet.pipeline_controlnet_inpaint",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionControlNetPAGInpaintPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_controlnet_sd_inpaint",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionControlNetPAGPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_controlnet_sd",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionControlNetPipeline",
+            "module_name": "diffusers.pipelines.controlnet.pipeline_controlnet",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionControlNetXSPipeline",
+            "module_name": "diffusers.pipelines.controlnet_xs.pipeline_controlnet_xs",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionDepth2ImgPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_depth2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionDiffEditPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_diffedit.pipeline_stable_diffusion_diffedit",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionGLIGENPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_gligen.pipeline_stable_diffusion_gligen",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionGLIGENTextImagePipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_gligen.pipeline_stable_diffusion_gligen_text_image",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionImageVariationPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_image_variation",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionInpaintPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_inpaint",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionInpaintPipelineLegacy",
+            "module_name": "diffusers.pipelines.deprecated.stable_diffusion_variants.pipeline_stable_diffusion_inpaint_legacy",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionInstructPix2PixPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_instruct_pix2pix",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionLDM3DPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_ldm3d.pipeline_stable_diffusion_ldm3d",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionLatentUpscalePipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_latent_upscale",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionModelEditingPipeline",
+            "module_name": "diffusers.pipelines.deprecated.stable_diffusion_variants.pipeline_stable_diffusion_model_editing",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionPAGImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_sd_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionPAGPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_sd",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionPanoramaPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_panorama.pipeline_stable_diffusion_panorama",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionParadigmsPipeline",
+            "module_name": "diffusers.pipelines.deprecated.stable_diffusion_variants.pipeline_stable_diffusion_paradigms",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionPipelineSafe",
+            "module_name": "diffusers.pipelines.stable_diffusion_safe.pipeline_stable_diffusion_safe",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionPix2PixZeroPipeline",
+            "module_name": "diffusers.pipelines.deprecated.stable_diffusion_variants.pipeline_stable_diffusion_pix2pix_zero",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionSAGPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_sag.pipeline_stable_diffusion_sag",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionUpscalePipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_upscale",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLAdapterPipeline",
+            "module_name": "diffusers.pipelines.t2i_adapter.pipeline_stable_diffusion_xl_adapter",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLControlNetImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.controlnet.pipeline_controlnet_sd_xl_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLControlNetInpaintPipeline",
+            "module_name": "diffusers.pipelines.controlnet.pipeline_controlnet_inpaint_sd_xl",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLControlNetPAGImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_controlnet_sd_xl_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLControlNetPAGPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_controlnet_sd_xl",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLControlNetPipeline",
+            "module_name": "diffusers.pipelines.controlnet.pipeline_controlnet_sd_xl",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLControlNetXSPipeline",
+            "module_name": "diffusers.pipelines.controlnet_xs.pipeline_controlnet_xs_sd_xl",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_xl.pipeline_stable_diffusion_xl_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLInpaintPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_xl.pipeline_stable_diffusion_xl_inpaint",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLInstructPix2PixPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_xl.pipeline_stable_diffusion_xl_instruct_pix2pix",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLPAGImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_sd_xl_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLPAGInpaintPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_sd_xl_inpaint",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLPAGPipeline",
+            "module_name": "diffusers.pipelines.pag.pipeline_pag_sd_xl",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableDiffusionXLPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion_xl.pipeline_stable_diffusion_xl",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableUnCLIPImg2ImgPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion.pipeline_stable_unclip_img2img",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "StableUnCLIPPipeline",
+            "module_name": "diffusers.pipelines.stable_diffusion.pipeline_stable_unclip",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "TextToVideoZeroPipeline",
+            "module_name": "diffusers.pipelines.text_to_video_synthesis.pipeline_text_to_video_zero",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "TextToVideoZeroSDXLPipeline",
+            "module_name": "diffusers.pipelines.text_to_video_synthesis.pipeline_text_to_video_zero_sdxl",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "UnCLIPImageVariationPipeline",
+            "module_name": "diffusers.pipelines.unclip.pipeline_unclip_image_variation",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "UnCLIPPipeline",
+            "module_name": "diffusers.pipelines.unclip.pipeline_unclip",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "UniDiffuserPipeline",
+            "module_name": "diffusers.pipelines.unidiffuser.pipeline_unidiffuser",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "VQDiffusionPipeline",
+            "module_name": "diffusers.pipelines.deprecated.vq_diffusion.pipeline_vq_diffusion",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "VersatileDiffusionDualGuidedPipeline",
+            "module_name": "diffusers.pipelines.deprecated.versatile_diffusion.pipeline_versatile_diffusion_dual_guided",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "VersatileDiffusionImageVariationPipeline",
+            "module_name": "diffusers.pipelines.deprecated.versatile_diffusion.pipeline_versatile_diffusion_image_variation",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "VersatileDiffusionTextToImagePipeline",
+            "module_name": "diffusers.pipelines.deprecated.versatile_diffusion.pipeline_versatile_diffusion_text_to_image",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "WuerstchenCombinedPipeline",
+            "module_name": "diffusers.pipelines.wuerstchen.pipeline_wuerstchen_combined",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        },
+        {
+            "cls_name": "WuerstchenDecoderPipeline",
+            "module_name": "diffusers.pipelines.wuerstchen.pipeline_wuerstchen",
+            "method_to_wrap": [
+                "__call__"
+            ]
+        }
+    ]
+}

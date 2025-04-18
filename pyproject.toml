@@ -1,0 +1,125 @@
+[project]
+name = "genai-monitor"
+version = "0.1.0"
+description = "Observability for Generative AI"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "sqlalchemy>=2.0.35",
+    "sqlalchemy-mixins>=2.0.5",
+    "loguru>=0.7.2",
+    "attrs>=24.2.0",
+    "cattrs>=24.1.2",
+    "pydantic-settings>=2.6.1",
+    "dependency_injector>=4.45.0",
+]
+
+[project.optional-dependencies]
+diffusers = [
+    "diffusers>=0.31.0",
+    "transformers>=4.46.2",
+    "torch>=1.10.0",
+    "sentencepiece>=0.1.96",
+]
+transformers = [
+    "transformers>=4.46.2",
+    "torch>=1.10.0",
+]
+openai = [
+    "openai>=1.55.0",
+]
+litellm = [
+    "litellm>=1.60.2",
+]
+
+[tool.uv]
+dev-dependencies = [
+    # Development tools
+    "mkdocs-autorefs>=1.4.1",
+    "mkdocs-click>=0.9.0",
+    "mkdocs-material>=9.6.11",
+    "mkdocstrings[python]>=0.29.1",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.1.1",
+    "pre-commit>=4.2.0",
+    "ruff>=0.11.4",
+    "coverage>=7.3.2",
+
+    # Include all other optional dependencies
+    "diffusers>=0.31.0",
+    "transformers>=4.46.2",
+    "torch>=1.10.0",
+    "sentencepiece>=0.1.96",
+    "openai>=1.55.0",
+    "litellm>=1.60.2",
+]
+
+[tool.ruff]
+exclude = [".venv"]
+extend-include = ["*.ipynb"]
+line-length = 120
+
+[tool.ruff.lint]
+preview = true
+explicit-preview-rules = true
+select = [
+    "E",    # pycodestyle errors
+    "F",    # Pyflakes
+    "C4",   # flake8-comprehensions
+    "C90",  # mccabe complex structure
+    "D",    # pydocstyle
+    "I",    # isort
+    "PT",   # flake8-pytest-style
+    "PL",   # Pylint
+    "SIM",  # flake8-simplify
+    "UP",   # pyupgrade
+    "W",    # pycodestyle warnings
+    "S",    # flake8-bandit
+    "ANN",  # flake8-annotations
+    "B",    # flake8-bugbear
+]
+
+ignore = [
+    "D100",
+    "D102",
+    "D104",
+    "ANN001",
+    "ANN002",
+    "ANN003",
+    "ANN201",
+    "ANN202",
+    "ANN401",
+    "UP006",
+    "UP007",
+    "UP035",
+    "PLR0913",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"src/genai_monitor/common/errors.py" = ["D107", "ANN204"]
+"src/genai_monitor/query/api.py" = ["D103", "D107", "ANN204"]
+"tests/*.py" = ["S101", "D103", "ANN204", "PLR2004", "D107", "D101"]
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 120
+
+[tool.mypy]
+warn_unused_configs = true
+ignore_missing_imports = true
+warn_unused_ignores = false
+show_error_codes = true
+check_untyped_defs = true
+no_implicit_optional = true
+disable_error_code = ["call-arg", "var-annotated"]
+namespace_packages = false
+exclude = [
+    "tests/"
+]
+
+[tool.coverage.run]
+omit = [
+    "/tmp/*",
+]

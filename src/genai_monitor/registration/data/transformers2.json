@@ -1,0 +1,11 @@
+{
+    "data": [
+        {
+            "cls_name": "GenerationMixin",
+            "module_name": "transformers.generation.utils",
+            "method_to_wrap": [
+                "generate"
+            ]
+        }
+    ]
+}

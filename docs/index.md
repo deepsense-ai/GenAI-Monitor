@@ -1,12 +1,13 @@
 <div align="center">
 
-<h1>GenAI Monitor</h1>
+<h1>GenAI Monitor <img src="genai_monitor_logo.png" alt="GenAI Monitor Logo" width="75"/>
+</h1>
 
-**Observability for Generative AI**
+<p align="center">
+  <em size="">Observability for Generative AI</em>
+</p>
 
 </div>
-
-
 
 
 <div align="center">
@@ -32,7 +33,7 @@ GenAI Monitor provides robust observability tools for Generative AI applications
 The library seamlessly integrates with popular AI frameworks and automatically captures model calls, stores responses for later retrieval without requiring you to modify your application code.
 
 
-# Features
+## Features
 
 - **Implicit Observability for Popular Frameworks**: Works out-of-the-box with
 most popular frameworks and providers without any code changes: Transformers, Diffusers, OpenAI, LiteLLM
@@ -43,6 +44,8 @@ most popular frameworks and providers without any code changes: Transformers, Di
 
 - **Artifact Tracking**: Attach metadata and artifacts to model calls for comprehensive traceability.
 - **Modular Installation**: Install only what you need to keep your dependencies lean.
+
+
 
 ## Installation
 To start tracking your GenAI models, install the `genai-monitor` package:
@@ -84,13 +87,13 @@ from openai import OpenAI
 
 api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=api_key)
-question = "What if the meaning of life is to be happy? Answer in single sentence."
+question = "How hard is to create a monitoring framework for GenAI models?"
 
 # First API call - This request is sent to OpenAI and the result is stored in the database
 response = client.chat.completions.create(
     messages=[{"role": "user", "content": question}],
     model="gpt-4o-mini-2024-07-18",
-    max_tokens=40,
+    max_tokens=400,
     temperature=0.4,
 )
 print(response.choices[0].message.content)
@@ -100,17 +103,22 @@ print(response.choices[0].message.content)
 response = client.chat.completions.create(
     messages=[{"role": "user", "content": question}],
     model="gpt-4o-mini-2024-07-18",
-    max_tokens=40,
+    max_tokens=400,
     temperature=0.4,
 )
 print(response.choices[0].message.content)
 # The application code remains unchanged, but you save time and API costs
 ```
 
-## Contributing
+## Future Work
+GenAI Monitor is under active development. Here are some of the exciting features on our roadmap:
 
-Contributions are welcome! Please see [CONTRIBUTING.md](https://github.com/deepsense-ai/GenAI-Monitor/blob/main/CONTRIBUTING.md) for details on how to contribute to this project.
+- [ ] Expanded Cloud Provider Integration
+- [ ] Vector Database Integration
+- [ ] Extensive Query Language
 
-## License
+## Documentation
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/deepsense-ai/GenAI-Monitor/blob/main/LICENSE) file for details.
+* [Quickstart](./quickstart/auto_mode.md)
+* [How-to guides](./index.md)
+* [API reference](./api_reference/index.md)

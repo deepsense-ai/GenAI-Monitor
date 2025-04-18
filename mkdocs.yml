@@ -1,0 +1,114 @@
+site_name: GenAI Monitor Docs
+site_description: Observability for Generative AI
+repo_name: deepsense-ai/GenAI-Monitor
+repo_url: https://github.com/deepsense-ai/GenAI-Monitor
+nav:
+  - GenAI Monitor: index.md
+  - Getting Started: quickstart/auto_mode.md
+  - How To:
+    - "Setup a project": how_to/db_setup.md
+    - "Register custom GenAI model": how_to/custom_registration.md
+    - "Track model artifacts": how_to/artifact_tracking.md
+    - "Add model metadata": how_to/model_metadata.md
+    - "Multiple generations": how_to/cached_instances.md
+  - API Reference:
+    - "Registration": api_reference/registration.md
+    - "Dependency Injection": api_reference/injectors.md
+    - "Structures": api_reference/structures.md
+    - "Database": api_reference/db.md
+    - "Query": api_reference/query.md
+    - "Utils": api_reference/utils.md
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme)"
+      primary: black
+      accent: custom
+      toggle:
+        icon: material/lightbulb-auto
+        name: Switch to light mode
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      primary: black
+      accent: custom
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: black
+      accent: custom
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to system preference
+  features:
+    - navigation.footer
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - content.code.annotate
+    - content.code.copy
+    - toc.integrate
+    - toc.follow
+plugins:
+  - search
+  - autorefs
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_root_heading: true
+            show_if_no_docstring: true
+            inherited_members: true
+            members_order: source
+            separate_signature: true
+            unwrap_annotated: true
+            filters:
+              - "!^_"
+            merge_init_into_class: true
+            docstring_section_style: spacy
+            signature_crossrefs: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            show_signature_annotations: true
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.inlinehilite
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: "#"
+  - mkdocs-click
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/deepsense-ai
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/deepsense_ai
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/company/deepsense-ai
+    - icon: fontawesome/brands/youtube
+      link: https://youtube.com/@deepsenseai
+    - icon: fontawesome/brands/medium
+      link: https://medium.com/deepsense-ai
+    - icon: fontawesome/solid/globe
+      link: https://deepsense.ai
