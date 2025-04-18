@@ -8,7 +8,7 @@ from genai_monitor.injectors.containers import get_container
 from genai_monitor.utils.auto_mode_configuration import load_config
 from genai_monitor.utils.user_registration import register_user
 
-config = load_config(os.getenv("GENAI_EVAL_DB_URL", "sqlite:///genai_eval.db"))
+config = load_config(os.getenv("GENAI_MONITOR_DB_URL", "sqlite:///genai_monitor.db"))
 logger.debug(f"Loaded configuration from database: {config}")
 
 container = get_container()

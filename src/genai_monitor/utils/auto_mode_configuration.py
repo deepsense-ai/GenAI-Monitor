@@ -36,7 +36,7 @@ def _get_database_version() -> str:
     Returns:
         str: The current database version.
     """
-    return os.getenv("GENAI_EVAL_DB_VERSION", DEFAULT_DB_VERSION)
+    return os.getenv("GENAI_MONITOR_DB_VERSION", DEFAULT_DB_VERSION)
 
 
 # pylint: disable=W0102
