@@ -1,6 +1,6 @@
 [project]
 name = "genai-monitor"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Observability for Generative AI"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -45,6 +45,10 @@ include = ["genai_monitor*"]
 
 [tool.setuptools.package-data]
 "genai_monitor.registration" = ["data/*.json"]
+
+
+[tool.setuptools.dynamic]
+version = {attr = "genai_monitor.__version__.__version__"}
 
 [project.optional-dependencies]
 diffusers = [
