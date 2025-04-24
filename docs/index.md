@@ -1,7 +1,6 @@
 <div align="center">
 
-<h1>GenAI Monitor <img src="genai_monitor_logo.png" alt="GenAI Monitor Logo" width="75"/>
-</h1>
+<h1>GenAI Monitor</h1>
 
 <p align="center">
   <em size="">Observability for Generative AI</em>
