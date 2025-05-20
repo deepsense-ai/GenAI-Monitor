@@ -55,6 +55,9 @@ theme:
 plugins:
   - search
   - autorefs
+  - mkdocs-simple-hooks:
+      hooks:
+        on_post_build: "docs.hooks:move_well_known"
   - mkdocstrings:
       handlers:
         python:
@@ -112,3 +115,4 @@ extra:
       link: https://medium.com/deepsense-ai
     - icon: fontawesome/solid/globe
       link: https://deepsense.ai
+

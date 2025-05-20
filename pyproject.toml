@@ -31,6 +31,7 @@ dependencies = [
     "cattrs>=24.1.2",
     "pydantic-settings>=2.6.1",
     "dependency_injector>=4.45.0",
+    "mkdocs-simple-hooks>=0.1.5",
 ]
 
 [build-system]
